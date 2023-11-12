@@ -1,0 +1,74 @@
+{
+  "id": "homepage",
+  "label": "Homepage",
+  "format": "page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Core": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "useAsTitle": true
+        }
+      }
+    },
+    "Metadata": {
+      "metaDescription": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "metaImage": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    },
+    "Article": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "image_block": {
+              "type": "SharedSlice"
+            },
+            "text_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "Links": {
+      "pageLinks": {
+        "type": "Group",
+        "config": {
+          "label": "Page Links",
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": "document",
+                "customtypes": ["contentPage"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "blogIndex",
+  "label": "Blog Index Page",
+  "format": "page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Core": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "useAsTitle": true
+        }
+      }
+    },
+    "Metadata": {
+      "metaDescription": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "metaImage": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    },
+    "Intro": {
+      "intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Intro",
+          "placeholder": "Introduction text that appears above the blogs list",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      }
+    },
+    "Filters": {
+      "blogTags": {
+        "type": "Group",
+        "config": {
+          "label": "Tags",
+          "fields": {
+            "blogTag": {
+              "type": "Link",
+              "config": {
+                "label": "Blog Tag",
+                "select": "document",
+                "customtypes": ["blogTag"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

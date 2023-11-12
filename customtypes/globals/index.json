@@ -1,0 +1,60 @@
+{
+  "id": "globals",
+  "label": "Globals",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Social": {
+      "socialLinks": {
+        "config": {
+          "label": "Social Links",
+          "fields": {
+            "platform": {
+              "type": "Select",
+              "config": {
+                "label": "Platform",
+                "placeholder": "",
+                "options": ["Instagram", "Twitter", "Facebook", "Linkedin"],
+                "default_value": "Instagram"
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": { "label": "Link", "placeholder": "", "select": "web" }
+            }
+          }
+        },
+        "type": "Group"
+      }
+    },
+    
+    "Contact": {
+      "contactAddress": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,list-item,o-list-item"
+        }
+      },
+      "contactLocation": {
+        "type": "GeoPoint",
+        "config": { "label": "Location" }
+      },
+      "contactMapLink": {
+        "type": "Link",
+        "config": { "label": "Map Link", "placeholder": "", "select": "web" }
+      },
+      "contactEmailAddress": {
+        "type": "Text",
+        "config": { "label": "Email Address", "placeholder": "" }
+      },
+      "contactNumber": {
+        "type": "Text",
+        "config": { "label": "Telephone Number", "placeholder": "" }
+      }
+    }
+  }
+}

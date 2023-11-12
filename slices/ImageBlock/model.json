@@ -1,0 +1,88 @@
+{
+  "id": "image_block",
+  "type": "SharedSlice",
+  "name": "Image Block",
+  "description": "Image Block",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 4000,
+              "height": 1500
+            },
+            "thumbnails": [
+              {
+                "name": "SmallScreen",
+                "width": 4000,
+                "height": 2500
+              }
+            ]
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption",
+            "placeholder": "Optional caption for the image"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "imageBlockFullScreen",
+      "name": "Image Block - Full Screen",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 4000,
+              "height": 3000
+            },
+            "thumbnails": [
+              {
+                "name": "wide",
+                "width": 4000,
+                "height": 2000
+              },
+              {
+                "name": "square",
+                "width": 4000,
+                "height": 4000
+              },
+              {
+                "name": "portrait",
+                "width": 4000,
+                "height": 6000
+              }
+            ]
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption",
+            "placeholder": "Optional caption for the image"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

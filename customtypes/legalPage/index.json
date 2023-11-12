@@ -1,0 +1,56 @@
+{
+  "id": "legalPage",
+  "label": "Legal Page",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Core": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "useAsTitle": true
+        }
+      },
+      "uid": {
+        "config": {
+          "label": "Slug"
+        },
+        "type": "UID"
+      }
+    },
+    "Metadata": {
+      "metaDescription": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "metaImage": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    },
+    "Body": {
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Body",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading2,strong,em,hyperlink,list-item,o-list-item"
+        }
+      }
+    }
+  }
+}

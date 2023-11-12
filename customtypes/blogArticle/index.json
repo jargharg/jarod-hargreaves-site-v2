@@ -1,0 +1,92 @@
+{
+  "id": "blogArticle",
+  "label": "Blog Article",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Core": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "useAsTitle": true
+        }
+      },
+      "uid": {
+        "config": {
+          "label": "Slug"
+        },
+        "type": "UID"
+      },
+      "datePosted": {
+        "type": "Date",
+        "config": {
+          "label": "Date Posted",
+          "placeholder": ""
+        }
+      }
+    },
+    "Metadata": {
+      "metaDescription": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "metaImage": {
+        "config": {
+          "label": "Meta Image",
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "thumbnails": [
+            {
+              "name": "card",
+              "width": 4000,
+              "height": 3000
+            }
+          ]
+        },
+        "type": "Image"
+      }
+    },
+    "Tags": {
+      "tags": {
+        "type": "Group",
+        "config": {
+          "label": "Tags",
+          "fields": {
+            "tag": {
+              "type": "Link",
+              "config": {
+                "label": "Tag",
+                "select": "document",
+                "customtypes": ["blogTag"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "Article": {
+      "slices3": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "text_block": {
+              "type": "SharedSlice"
+            },
+            "image_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "siteHeader",
+  "label": "Site Header",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Menu": {
+      "menuItems": {
+        "type": "Group",
+        "config": {
+          "label": "Menu Items",
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": "document"
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@import url("https://use.typekit.net/xai7jgj.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$max-w-container: 1512px;
+
+*,
+*::after,
+*::before {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  backface-visibility: hidden;
+  font-kerning: normal;
+}
+
+html,
+body {
+  @apply tracking-tighter leading-none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#prismic-toolbar-v2 {
+  @apply hidden;
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-5 lg:px-10 xl:px-16;
+    max-width: $max-w-container;
+  }
+
+  .max-w-container {
+    max-width: $max-w-container;
+  }
+}
+
+.prose {
+  color: currentColor !important;
+
+  p {
+    @apply first-of-type:mt-0 last-of-type:mb-0;
+  }
+}
+
+// begin cookie control
+
+.cookieControl {
+  z-index: 30 !important;
+}
+
+.cookieControl .cookieControl {
+  &__ControlButton {
+    @apply left-5 right-auto text-sm;
+  }
+
+  &__Bar {
+    @apply border-t border-black;
+
+    &--bottom-full {
+      @apply inset-x-0 flex w-full justify-center bottom-0;
+    }
+  }
+
+  &__BarContainer {
+    @apply bg-white mx-auto py-4 px-5 lg:px-10;
+    width: $max-w-container;
+  }
+
+  &__ModalContent {
+    overflow-y: auto !important;
+  }
+}
+
+// end cookie control
