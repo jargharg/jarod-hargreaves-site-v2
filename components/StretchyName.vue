@@ -1,5 +1,5 @@
 <template>
-  <h1 ref="elName" class="name">
+  <h1 ref="elContainer" class="name">
     <div
       ref="elChar"
       class="absolute opacity-0 not-sr-only pointer-events-none select-none"
@@ -16,31 +16,57 @@
       aria-hidden="true"
     >
       <div class="flex">
-        <span> Ja </span>
+        <div>
+          <span
+            v-for="(char, index) in nameParts[0]"
+            :key="index"
+            :class="`name__letter--${char}`"
+          >
+            {{ char }}
+          </span>
+        </div>
 
         <transition-group name="name-char" tag="div">
           <span
             v-for="(char, index) in jaStretchedChars"
-            :key="`${index}-ja`"
+            :key="index"
             class="inline-block"
+            :class="`name__letter--${char}`"
           >
             {{ char }}
           </span>
         </transition-group>
 
-        <div>rod Ha</div>
+        <div>
+          <span
+            v-for="(char, index) in nameParts[1]"
+            :key="index"
+            :class="`name__letter--${char}`"
+          >
+            {{ char }}
+          </span>
+        </div>
 
         <transition-group name="name-char" tag="div">
           <span
             v-for="(char, index) in haStretchedChars"
-            :key="`${index}-ha`"
+            :key="index"
+            :class="`name__letter--${char}`"
             class="inline-block"
           >
             {{ char }}
           </span>
         </transition-group>
 
-        <div>rgreaves</div>
+        <div>
+          <span
+            v-for="(char, index) in nameParts[2]"
+            :key="index"
+            :class="`name__letter--${char}`"
+          >
+            {{ char }}
+          </span>
+        </div>
       </div>
 
       <div
@@ -57,54 +83,29 @@
 <script>
 import gsap from 'gsap'
 import Draggable from 'gsap/Draggable'
+import sleep from '~/helpers/sleep'
 
 export default {
   setup () {
     let draggable = null
 
     const elChar = ref(null)
+    const elContainer = ref(null)
     const elDraggable = ref(null)
     const elIndicator = ref(null)
-    const elName = ref(null)
     const elSpacer = ref(null)
+
+    const isAtMaxWidth = ref(false)
 
     const numberOfExtraChars = ref(0)
     const jaStretchedChars = ref('')
     const haStretchedChars = ref('')
 
-    watch(numberOfExtraChars, (extraChars) => {
-      let jaString = ''
-      let haString = ''
-
-      for (let i = 0; i < extraChars; i++) {
-        const initialAs = 5
-
-        // if (i <= initialAs && extraChars <= initialAs) {
-        if (i <= initialAs) {
-          haString += 'a'
-        } else {
-          const mod = i - initialAs > 0 ? 4 : 2
-
-          if (i % mod === 0) {
-            haString += 'a'
-          } else if (i % mod === 1) {
-            haString = `${haString.slice(0, -1)}ha`
-          } else if (i % mod === 2) {
-            jaString += 'a'
-          } else {
-            jaString = `${jaString.slice(0, -1)}ja`
-          }
-        }
-      }
-
-      jaStretchedChars.value = jaString
-      haStretchedChars.value = haString
-    })
-
-    const isAtMaxWidth = ref(false)
+    const nameParts = ['Ja', 'rod Ha', 'rgreaves']
 
     function initStretcher () {
-      const { right: containerRight } = elName.value.getBoundingClientRect()
+      const { right: containerRight } =
+        elContainer.value.getBoundingClientRect()
       const { right: draggableRight } =
         elDraggable.value.getBoundingClientRect()
       const { right: spacerRight } = elSpacer.value.getBoundingClientRect()
@@ -119,7 +120,7 @@ export default {
 
       draggable = Draggable.create(elDraggable.value, {
         bounds,
-        trigger: elName.value,
+        trigger: elContainer.value,
         type: 'x',
         liveSnap: (value) => {
           return Math.min(
@@ -131,18 +132,44 @@ export default {
           const { right: draggableRight } =
             elDraggable.value.getBoundingClientRect()
 
-          numberOfExtraChars.value = Math.round(
-            (draggableRight - spacerRight) / charWidth,
+          numberOfExtraChars.value = Math.floor(
+            (draggableRight - spacerRight - 10) / charWidth,
           )
+
           isAtMaxWidth.value = containerRight - draggableRight < charWidth
         },
       })
     }
 
-    function resetStretcher () {
+    watch(numberOfExtraChars, (extraChars) => {
+      let jaString = ''
+      let haString = ''
+
+      for (let i = 0; i < extraChars; i++) {
+        const initialHas = 4
+
+        const mod = i - initialHas * 2 >= 0 ? 4 : 2
+
+        if (i % mod === 0) {
+          haString += 'a'
+        } else if (i % mod === 1) {
+          haString = `${haString.slice(0, -1)}ha`
+        } else if (i % mod === 2) {
+          jaString += 'a'
+        } else {
+          jaString = `${jaString.slice(0, -1)}ja`
+        }
+      }
+
+      jaStretchedChars.value = jaString
+      haStretchedChars.value = haString
+    })
+
+    async function resetStretcher () {
+      await sleep(100)
       gsap.set(elDraggable.value, { clearProps: 'all' })
       draggable[0]?.kill()
-      numberOfExtraChars.value = 1
+      numberOfExtraChars.value = 0
       initStretcher()
     }
 
@@ -157,13 +184,14 @@ export default {
 
     return {
       elChar,
+      elContainer,
       elDraggable,
       elIndicator,
-      elName,
       elSpacer,
+      haStretchedChars,
       isAtMaxWidth,
       jaStretchedChars,
-      haStretchedChars,
+      nameParts,
     }
   },
 }
@@ -171,7 +199,7 @@ export default {
 
 <style lang="scss" scoped>
 .name {
-  @apply relative flex text-6xl w-full align-baseline font-serif font-medium -mt-2 overflow-y-hidden;
+  @apply relative flex text-3xl md:text-5xl xl:text-6xl w-full align-baseline font-serif font-medium -mt-2 overflow-y-hidden;
   $root: &;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -184,7 +212,7 @@ export default {
 
   &__indicator {
     &::after {
-      @apply flex items-center justify-center h-full text-3xl p-1 brightness-0;
+      @apply flex items-center justify-center h-full text-lg md:text-3xl p-1 brightness-0;
       transition: filter 0.1s;
       content: "👉";
     }
@@ -194,14 +222,52 @@ export default {
       content: "🙃";
     }
   }
+
+  &__letter {
+    &--J {
+      letter-spacing: -0.07em;
+    }
+
+    &--a {
+      letter-spacing: -0.02em;
+
+      &:has(+ .name__letter--v) {
+        letter-spacing: -0.045em;
+      }
+    }
+
+    &--r {
+      letter-spacing: -0.05em;
+    }
+
+    &--o {
+      letter-spacing: -0.03em;
+    }
+
+    &--H {
+      letter-spacing: -0.05em;
+    }
+
+    &--g {
+      letter-spacing: -0.005em;
+    }
+
+    &--e {
+      letter-spacing: -0.04em;
+    }
+
+    &--v {
+      letter-spacing: -0.05em;
+    }
+  }
 }
 
 .name-char-enter-active {
-  @apply transition-all duration-200 ease-out;
+  @apply transition-all duration-200;
 }
 
 .name-char-enter-from {
-  @apply -translate-y-full opacity-0;
+  @apply opacity-0;
 }
 
 .name-char-leave-active {
