@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="py-8 bg-black text-white border-t-[3px] border-double border-white"
+    class="py-8 bg-black text-white"
   >
     <div class="container">
       <Heading level="2" class="mb-2">

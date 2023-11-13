@@ -61,7 +61,7 @@ a {
   }
 
   &__Bar {
-    @apply border-t border-black;
+    @apply border-t-2 border-black;
 
     &--bottom-full {
       @apply inset-x-0 flex w-full justify-center bottom-0;

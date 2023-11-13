@@ -2,7 +2,7 @@
   <article class="pt-10">
     <NuxtSliceZone :slices="doc.slices" class="mb-10" />
 
-    <div class="border-t border-black mb-6 py-10">
+    <div class="border-t-2 border-black mb-6 py-10">
       <div class="container mb-4">
         <Heading level="2" class="text-xl">
           Content Pages (user-selected documents in CMS)

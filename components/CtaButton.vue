@@ -77,7 +77,7 @@ export default {
   @apply text-center leading-none;
 
   &--border {
-    @apply border border-black px-12 py-4 hover:bg-black hover:text-white;
+    @apply border-2 border-black px-12 py-4 hover:bg-black hover:text-white;
   }
 }
 </style>

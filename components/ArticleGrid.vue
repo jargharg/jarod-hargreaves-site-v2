@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="border-y border-black py-4 mb-10">
+    <div class="border-y-2 border-black py-4 mb-10">
       <section class="container">
         <Heading level="3" class="mb-4">
           Filters

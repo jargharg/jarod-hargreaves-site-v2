@@ -4,7 +4,7 @@
       <li v-for="item in items" :key="item.id" class="h-full">
         <nuxt-link
           :to="$prismic.asLink(item)"
-          class="h-full flex flex-col border border-black group"
+          class="h-full flex flex-col border-2 border-black group"
         >
           <PrismicSizedImage
             :image="imageCrop === 'default' ? item.metaImage : item.metaImage[imageCrop]"

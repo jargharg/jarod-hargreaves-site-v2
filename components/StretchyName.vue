@@ -267,7 +267,7 @@ export default {
 }
 
 .name-char-enter-from {
-  @apply opacity-0;
+  @apply opacity-0 -translate-y-full;
 }
 
 .name-char-leave-active {
