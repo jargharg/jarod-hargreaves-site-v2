@@ -3,7 +3,7 @@
     <SiteHeader />
 
     <main class="flex-1 w-screen min-h-[100dvh]">
-      <NuxtPage :transition="defaultTransition" />
+      <NuxtPage :transition="transition" />
     </main>
 
     <SiteFooter />
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import defaultTransition from '~/helpers/defaultTransition'
+import transition from '~/helpers/defaultTransition'
 
 export default {
   setup () {
@@ -44,7 +44,7 @@ export default {
       htmlAttrs: { lang: 'en' },
     }))
 
-    return { defaultTransition }
+    return { transition }
   },
 }
 </script>

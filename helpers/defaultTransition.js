@@ -33,24 +33,12 @@ export const defaultTransition = DISABLE_PAGE_TRANSITIONS
           .set([el, elTransitionBlock], { clearProps: true })
       },
 
-      // .fromTo(el, { clipPath: `inset(0 0 0 -${elTransitionBlock.scrollWidth * 1.5}px)` }, { clipPath: `inset(0 0 0 ${window.innerWidth + (elTransitionBlock.scrollWidth * 0.5)}px)`, ease: 'sine.out' }, '<')
-
       onLeave (el, onComplete) {
-        const elTransitionBlock = getTransitionBlock()
-
         const { top } = el.getBoundingClientRect()
-
-        const elFooter = document.querySelector('footer')
-        const footerTop = elFooter.getBoundingClientRect().top
 
         return gsap.timeline({ onComplete, defaults })
           .to(el, {})
           .set(el, { position: 'fixed', top: top ?? 0, left: 0, right: 0, zIndex: 1, background: 'white' })
-      // .set(elFooter, { position: 'fixed', top: footerTop, left: 0, right: 0 })
-      // .set(elTransitionBlock, { opacity: 1, rotate: -360, x: 0 - elTransitionBlock.scrollWidth - window.innerWidth })
-      // .to(elTransitionBlock, { x: elTransitionBlock.scrollWidth, rotate: 0, ease: 'sine.out' })
-      // .fromTo([el, elFooter], { clipPath: `inset(0 0 0 -${elTransitionBlock.scrollWidth * 1.5}px)` }, { clipPath: `inset(0 0 0 ${window.innerWidth + (elTransitionBlock.scrollWidth * 0.5)}px)`, ease: 'sine.out' }, '<')
-      // .set([el, elFooter, elTransitionBlock], { clearProps: true })
       },
     }
 
