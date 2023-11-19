@@ -1,6 +1,6 @@
 {
   "id": "legalPage",
-  "label": "Legal Page",
+  "label": "[PAGE] Legal Page",
   "format": "page",
   "repeatable": true,
   "status": true,

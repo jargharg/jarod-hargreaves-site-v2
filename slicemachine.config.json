@@ -1,8 +1,6 @@
 {
-  "// @TODO apiEndpoint": "update with your repo name and remove this comment",
-  "apiEndpoint": "https://withcottonbase.prismic.io/api/v2",
-  "// @TODO repositoryName": "update with your repo name and remove this comment",
-  "repositoryName": "withcottonbase",
+  "apiEndpoint": "https://jarod-hargreaves.prismic.io/api/v2",
+  "repositoryName": "jarod-hargreaves",
   "adapter": "@slicemachine/adapter-nuxt",
   "libraries": ["./slices"],
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"

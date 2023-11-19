@@ -5,368 +5,19 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
- * Item in *Blog Article → Tags*
- */
-export interface BlogArticleDocumentDataTagsItem {
-  /**
-   * Tag field in *Blog Article → Tags*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogArticle.tags[].tag
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  tag: prismic.ContentRelationshipField<"blogTag">;
-}
-
-type BlogArticleDocumentDataSlices3Slice = TextBlockSlice | ImageBlockSlice;
-
-/**
- * Content for Blog Article documents
- */
-interface BlogArticleDocumentData {
-  /**
-   * Title field in *Blog Article*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogArticle.title
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Date Posted field in *Blog Article*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogArticle.datePosted
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/field#date
-   */
-  datePosted: prismic.DateField
-  /**
-   * Meta Description field in *Blog Article*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: blogArticle.metaDescription
-   * - **Tab**: Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  metaDescription: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Blog Article*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogArticle.metaImage
-   * - **Tab**: Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  metaImage: prismic.ImageField<"card">
-  /**
-   * Tags field in *Blog Article*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogArticle.tags[]
-   * - **Tab**: Tags
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */;
-  tags: prismic.GroupField<Simplify<BlogArticleDocumentDataTagsItem>>
-  /**
-   * Slice Zone field in *Blog Article*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogArticle.slices3[]
-   * - **Tab**: Article
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */;
-  slices3: prismic.SliceZone<BlogArticleDocumentDataSlices3Slice>;
-}
-
-/**
- * Blog Article document from Prismic
- *
- * - **API ID**: `blogArticle`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type BlogArticleDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<BlogArticleDocumentData>,
-    "blogArticle",
-    Lang
-  >;
-
-/**
- * Item in *Blog Index Page → Tags*
- */
-export interface BlogIndexDocumentDataBlogTagsItem {
-  /**
-   * Blog Tag field in *Blog Index Page → Tags*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogIndex.blogTags[].blogTag
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  blogTag: prismic.ContentRelationshipField<"blogTag">;
-}
-
-/**
- * Content for Blog Index Page documents
- */
-interface BlogIndexDocumentData {
-  /**
-   * Title field in *Blog Index Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogIndex.title
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField
-  /**
-   * Meta Description field in *Blog Index Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: blogIndex.metaDescription
-   * - **Tab**: Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  metaDescription: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Blog Index Page*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogIndex.metaImage
-   * - **Tab**: Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  metaImage: prismic.ImageField<never>
-  /**
-   * Intro field in *Blog Index Page*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Introduction text that appears above the blogs list
-   * - **API ID Path**: blogIndex.intro
-   * - **Tab**: Intro
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */;
-  intro: prismic.RichTextField
-  /**
-   * Tags field in *Blog Index Page*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogIndex.blogTags[]
-   * - **Tab**: Filters
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */;
-  blogTags: prismic.GroupField<Simplify<BlogIndexDocumentDataBlogTagsItem>>;
-}
-
-/**
- * Blog Index Page document from Prismic
- *
- * - **API ID**: `blogIndex`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type BlogIndexDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<BlogIndexDocumentData>,
-    "blogIndex",
-    Lang
-  >;
-
-/**
- * Content for Blog Tag documents
- */
-interface BlogTagDocumentData {
-  /**
-   * Title field in *Blog Tag*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogTag.title
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-}
-
-/**
- * Blog Tag document from Prismic
- *
- * - **API ID**: `blogTag`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type BlogTagDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<BlogTagDocumentData>,
-    "blogTag",
-    Lang
-  >;
-
-type ContentPageDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
-
-/**
- * Content for Content Page documents
- */
-interface ContentPageDocumentData {
-  /**
-   * Title field in *Content Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contentPage.title
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField
-  /**
-   * Meta Description field in *Content Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: contentPage.metaDescription
-   * - **Tab**: Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  metaDescription: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Content Page*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contentPage.metaImage
-   * - **Tab**: Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  metaImage: prismic.ImageField<never>
-  /**
-   * Slice Zone field in *Content Page*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contentPage.slices[]
-   * - **Tab**: Article
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */;
-  slices: prismic.SliceZone<ContentPageDocumentDataSlicesSlice>;
-}
-
-/**
- * Content Page document from Prismic
- *
- * - **API ID**: `contentPage`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ContentPageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<ContentPageDocumentData>,
-    "contentPage",
-    Lang
-  >;
-
-/**
- * Item in *Globals → Social Links*
- */
-export interface GlobalsDocumentDataSocialLinksItem {
-  /**
-   * Platform field in *Globals → Social Links*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Instagram
-   * - **API ID Path**: globals.socialLinks[].platform
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  platform: prismic.SelectField<
-    "Instagram" | "Twitter" | "Facebook" | "Linkedin",
-    "filled"
-  >;
-
-  /**
-   * Link field in *Globals → Social Links*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: globals.socialLinks[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-}
-
-/**
  * Content for Globals documents
  */
 interface GlobalsDocumentData {
   /**
-   * Social Links field in *Globals*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: globals.socialLinks[]
-   * - **Tab**: Social
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  socialLinks: prismic.GroupField<Simplify<GlobalsDocumentDataSocialLinksItem>>
-  /**
-   * Address field in *Globals*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: globals.contactAddress
-   * - **Tab**: Contact
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */;
-  contactAddress: prismic.RichTextField;
-
-  /**
-   * Location field in *Globals*
-   *
-   * - **Field Type**: GeoPoint
-   * - **Placeholder**: *None*
-   * - **API ID Path**: globals.contactLocation
-   * - **Tab**: Contact
-   * - **Documentation**: https://prismic.io/docs/field#geopoint
-   */
-  contactLocation: prismic.GeoPointField;
-
-  /**
-   * Map Link field in *Globals*
+   * LinkedIn field in *Globals*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: globals.contactMapLink
-   * - **Tab**: Contact
+   * - **API ID Path**: globals.linkedInLink
+   * - **Tab**: Social
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  contactMapLink: prismic.LinkField;
-
-  /**
+  linkedInLink: prismic.LinkField /**
    * Email Address field in *Globals*
    *
    * - **Field Type**: Text
@@ -374,7 +25,7 @@ interface GlobalsDocumentData {
    * - **API ID Path**: globals.contactEmailAddress
    * - **Tab**: Contact
    * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
+   */;
   contactEmailAddress: prismic.KeyTextField;
 
   /**
@@ -408,26 +59,26 @@ export type GlobalsDocument<Lang extends string = string> =
 type HomepageDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
 
 /**
- * Item in *Homepage → Page Links*
+ * Item in *[PAGE] Homepage → Projects*
  */
-export interface HomepageDocumentDataPageLinksItem {
+export interface HomepageDocumentDataProjectsItem {
   /**
-   * Link field in *Homepage → Page Links*
+   * Project field in *[PAGE] Homepage → Projects*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.pageLinks[].link
+   * - **API ID Path**: homepage.projects[].project
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.ContentRelationshipField<"contentPage">;
+  project: prismic.ContentRelationshipField<"project">;
 }
 
 /**
- * Content for Homepage documents
+ * Content for [PAGE] Homepage documents
  */
 interface HomepageDocumentData {
   /**
-   * Title field in *Homepage*
+   * Title field in *[PAGE] Homepage*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -435,9 +86,8 @@ interface HomepageDocumentData {
    * - **Tab**: Core
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.KeyTextField
-  /**
-   * Meta Description field in *Homepage*
+  title: prismic.KeyTextField /**
+   * Meta Description field in *[PAGE] Homepage*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -448,7 +98,7 @@ interface HomepageDocumentData {
   metaDescription: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Homepage*
+   * Meta Image field in *[PAGE] Homepage*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -456,9 +106,8 @@ interface HomepageDocumentData {
    * - **Tab**: Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  metaImage: prismic.ImageField<never>
-  /**
-   * Slice Zone field in *Homepage*
+  metaImage: prismic.ImageField<never> /**
+   * Slice Zone field in *[PAGE] Homepage*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -466,21 +115,20 @@ interface HomepageDocumentData {
    * - **Tab**: Article
    * - **Documentation**: https://prismic.io/docs/field#slices
    */;
-  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice>
-  /**
-   * Page Links field in *Homepage*
+  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice> /**
+   * Projects field in *[PAGE] Homepage*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.pageLinks[]
-   * - **Tab**: Links
+   * - **API ID Path**: homepage.projects[]
+   * - **Tab**: Projects
    * - **Documentation**: https://prismic.io/docs/field#group
    */;
-  pageLinks: prismic.GroupField<Simplify<HomepageDocumentDataPageLinksItem>>;
+  projects: prismic.GroupField<Simplify<HomepageDocumentDataProjectsItem>>;
 }
 
 /**
- * Homepage document from Prismic
+ * [PAGE] Homepage document from Prismic
  *
  * - **API ID**: `homepage`
  * - **Repeatable**: `false`
@@ -496,11 +144,11 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 /**
- * Content for Legal Page documents
+ * Content for [PAGE] Legal Page documents
  */
 interface LegalPageDocumentData {
   /**
-   * Title field in *Legal Page*
+   * Title field in *[PAGE] Legal Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -508,9 +156,8 @@ interface LegalPageDocumentData {
    * - **Tab**: Core
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.KeyTextField
-  /**
-   * Meta Description field in *Legal Page*
+  title: prismic.KeyTextField /**
+   * Meta Description field in *[PAGE] Legal Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -521,7 +168,7 @@ interface LegalPageDocumentData {
   metaDescription: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Legal Page*
+   * Meta Image field in *[PAGE] Legal Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -529,9 +176,8 @@ interface LegalPageDocumentData {
    * - **Tab**: Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  metaImage: prismic.ImageField<never>
-  /**
-   * Body field in *Legal Page*
+  metaImage: prismic.ImageField<never> /**
+   * Body field in *[PAGE] Legal Page*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -543,7 +189,7 @@ interface LegalPageDocumentData {
 }
 
 /**
- * Legal Page document from Prismic
+ * [PAGE] Legal Page document from Prismic
  *
  * - **API ID**: `legalPage`
  * - **Repeatable**: `true`
@@ -555,6 +201,219 @@ export type LegalPageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<LegalPageDocumentData>,
     "legalPage",
+    Lang
+  >;
+
+/**
+ * Item in *[PAGE] Project → Credits*
+ */
+export interface ProjectDocumentDataCreditsItem {
+  /**
+   * Heading field in *[PAGE] Project → Credits*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.credits[].heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Credit field in *[PAGE] Project → Credits*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.credits[].credit
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  credit: prismic.KeyTextField;
+}
+
+/**
+ * Item in *[PAGE] Project → Tech*
+ */
+export interface ProjectDocumentDataTechItem {
+  /**
+   * Item field in *[PAGE] Project → Tech*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.tech[].item
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  item: prismic.KeyTextField;
+}
+
+type ProjectDocumentDataSlices3Slice = TextBlockSlice | ImageBlockSlice;
+
+/**
+ * Content for [PAGE] Project documents
+ */
+interface ProjectDocumentData {
+  /**
+   * Title field in *[PAGE] Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.title
+   * - **Tab**: Core
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField /**
+   * Meta Description field in *[PAGE] Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: project.metaDescription
+   * - **Tab**: Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  metaDescription: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *[PAGE] Project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.metaImage
+   * - **Tab**: Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  metaImage: prismic.ImageField<"card"> /**
+   * Hero Image field in *[PAGE] Project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.heroImage
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */;
+  heroImage: prismic.ImageField<"portrait"> /**
+   * Project Link field in *[PAGE] Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.projectLink
+   * - **Tab**: Details
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */;
+  projectLink: prismic.LinkField;
+
+  /**
+   * Credits field in *[PAGE] Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.credits[]
+   * - **Tab**: Details
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  credits: prismic.GroupField<Simplify<ProjectDocumentDataCreditsItem>>;
+
+  /**
+   * Tech field in *[PAGE] Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.tech[]
+   * - **Tab**: Details
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  tech: prismic.GroupField<Simplify<ProjectDocumentDataTechItem>> /**
+   * Intro field in *[PAGE] Project*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.intro
+   * - **Tab**: Intro
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */;
+  intro: prismic.RichTextField /**
+   * Slice Zone field in *[PAGE] Project*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.slices3[]
+   * - **Tab**: Article
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */;
+  slices3: prismic.SliceZone<ProjectDocumentDataSlices3Slice>;
+}
+
+/**
+ * [PAGE] Project document from Prismic
+ *
+ * - **API ID**: `project`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProjectDocumentData>,
+    "project",
+    Lang
+  >;
+
+/**
+ * Content for [PAGE] Project Index documents
+ */
+interface ProjectIndexDocumentData {
+  /**
+   * Title field in *[PAGE] Project Index*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectIndex.title
+   * - **Tab**: Core
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField /**
+   * Meta Description field in *[PAGE] Project Index*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: projectIndex.metaDescription
+   * - **Tab**: Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  metaDescription: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *[PAGE] Project Index*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectIndex.metaImage
+   * - **Tab**: Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  metaImage: prismic.ImageField<never> /**
+   * Intro field in *[PAGE] Project Index*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Introduction text that appears above the projects list
+   * - **API ID Path**: projectIndex.intro
+   * - **Tab**: Intro
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */;
+  intro: prismic.RichTextField;
+}
+
+/**
+ * [PAGE] Project Index document from Prismic
+ *
+ * - **API ID**: `projectIndex`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectIndexDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ProjectIndexDocumentData>,
+    "projectIndex",
     Lang
   >;
 
@@ -615,73 +474,13 @@ export type SiteFooterDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Item in *Site Header → Menu Items*
- */
-export interface SiteHeaderDocumentDataMenuItemsItem {
-  /**
-   * Link field in *Site Header → Menu Items*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: siteHeader.menuItems[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.ContentRelationshipField;
-
-  /**
-   * Label field in *Site Header → Menu Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: siteHeader.menuItems[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
-}
-
-/**
- * Content for Site Header documents
- */
-interface SiteHeaderDocumentData {
-  /**
-   * Menu Items field in *Site Header*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: siteHeader.menuItems[]
-   * - **Tab**: Menu
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  menuItems: prismic.GroupField<Simplify<SiteHeaderDocumentDataMenuItemsItem>>;
-}
-
-/**
- * Site Header document from Prismic
- *
- * - **API ID**: `siteHeader`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type SiteHeaderDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<SiteHeaderDocumentData>,
-    "siteHeader",
-    Lang
-  >;
-
 export type AllDocumentTypes =
-  | BlogArticleDocument
-  | BlogIndexDocument
-  | BlogTagDocument
-  | ContentPageDocument
   | GlobalsDocument
   | HomepageDocument
   | LegalPageDocument
-  | SiteFooterDocument
-  | SiteHeaderDocument;
+  | ProjectDocument
+  | ProjectIndexDocument
+  | SiteFooterDocument;
 
 /**
  * Primary content in *Image Block → Primary*
@@ -897,39 +696,30 @@ declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig
+      options?: prismic.ClientConfig,
     ): prismic.Client<AllDocumentTypes>;
   }
 
   namespace Content {
     export type {
-      BlogArticleDocument,
-      BlogArticleDocumentData,
-      BlogArticleDocumentDataTagsItem,
-      BlogArticleDocumentDataSlices3Slice,
-      BlogIndexDocument,
-      BlogIndexDocumentData,
-      BlogIndexDocumentDataBlogTagsItem,
-      BlogTagDocument,
-      BlogTagDocumentData,
-      ContentPageDocument,
-      ContentPageDocumentData,
-      ContentPageDocumentDataSlicesSlice,
       GlobalsDocument,
       GlobalsDocumentData,
-      GlobalsDocumentDataSocialLinksItem,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
-      HomepageDocumentDataPageLinksItem,
+      HomepageDocumentDataProjectsItem,
       LegalPageDocument,
       LegalPageDocumentData,
+      ProjectDocument,
+      ProjectDocumentData,
+      ProjectDocumentDataCreditsItem,
+      ProjectDocumentDataTechItem,
+      ProjectDocumentDataSlices3Slice,
+      ProjectIndexDocument,
+      ProjectIndexDocumentData,
       SiteFooterDocument,
       SiteFooterDocumentData,
       SiteFooterDocumentDataMenuItemsItem,
-      SiteHeaderDocument,
-      SiteHeaderDocumentData,
-      SiteHeaderDocumentDataMenuItemsItem,
       AllDocumentTypes,
       ImageBlockSlice,
       ImageBlockSliceDefaultPrimary,

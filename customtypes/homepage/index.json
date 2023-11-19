@@ -1,6 +1,6 @@
 {
   "id": "homepage",
-  "label": "Homepage",
+  "label": "[PAGE] Homepage",
   "format": "page",
   "repeatable": false,
   "status": true,
@@ -51,19 +51,18 @@
         }
       }
     },
-    "Links": {
-      "pageLinks": {
+    "Projects": {
+      "projects": {
         "type": "Group",
         "config": {
-          "label": "Page Links",
+          "label": "Projects",
           "fields": {
-            "link": {
+            "project": {
               "type": "Link",
               "config": {
-                "label": "Link",
-                "placeholder": "",
+                "label": "Project",
                 "select": "document",
-                "customtypes": ["contentPage"]
+                "customtypes": ["project"]
               }
             }
           }

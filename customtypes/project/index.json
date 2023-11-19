@@ -1,0 +1,145 @@
+{
+  "id": "project",
+  "label": "[PAGE] Project",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Core": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "useAsTitle": true
+        }
+      },
+      "uid": {
+        "config": {
+          "label": "Slug"
+        },
+        "type": "UID"
+      }
+    },
+    "Metadata": {
+      "metaDescription": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "metaImage": {
+        "config": {
+          "label": "Meta Image",
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "thumbnails": [
+            {
+              "name": "card",
+              "width": 4000,
+              "height": 3000
+            }
+          ]
+        },
+        "type": "Image"
+      }
+    },
+    "Hero": {
+      "heroImage": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Image",
+          "constraint": {
+            "width": 4000,
+            "height": 2850
+          },
+          "thumbnails": [
+            {
+              "name": "portrait",
+              "width": 4000,
+              "height": 6000
+            }
+          ]
+        }
+      }
+    },
+    "Details": {
+      "projectLink": {
+        "type": "Link",
+        "config": {
+          "label": "Project Link",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "select": "web"
+        }
+      },
+      "credits": {
+        "type": "Group",
+        "config": {
+          "label": "Credits",
+          "fields": {
+            "heading": {
+              "type": "Text",
+              "config": {
+                "label": "Heading",
+                "placeholder": ""
+              }
+            },
+            "credit": {
+              "type": "Text",
+              "config": {
+                "label": "Credit",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "tech": {
+        "type": "Group",
+        "config": {
+          "label": "Tech",
+          "fields": {
+            "item": {
+              "type": "Text",
+              "config": {
+                "label": "Item",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "Intro": {
+      "intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Intro",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      }
+    },
+    "Article": {
+      "slices3": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "text_block": {
+              "type": "SharedSlice"
+            },
+            "image_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

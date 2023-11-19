@@ -1,5 +1,5 @@
 <template>
-  <h1 ref="elContainer" class="name">
+  <NuxtLink ref="elContainer" class="name" to="/">
     <div
       ref="elChar"
       class="absolute opacity-0 not-sr-only pointer-events-none select-none"
@@ -28,7 +28,7 @@
 
         <transition-group name="name-char" tag="div">
           <span
-            v-for="(char, index) in jaStretchedChars"
+            v-for="(char, index) in nameParts[1]"
             :key="index"
             class="inline-block"
             :class="`name__letter--${char}`"
@@ -39,7 +39,7 @@
 
         <div>
           <span
-            v-for="(char, index) in nameParts[1]"
+            v-for="(char, index) in nameParts[2]"
             :key="index"
             :class="`name__letter--${char}`"
           >
@@ -49,7 +49,7 @@
 
         <transition-group name="name-char" tag="div">
           <span
-            v-for="(char, index) in haStretchedChars"
+            v-for="(char, index) in nameParts[3]"
             :key="index"
             :class="`name__letter--${char}`"
             class="inline-block"
@@ -60,7 +60,7 @@
 
         <div>
           <span
-            v-for="(char, index) in nameParts[2]"
+            v-for="(char, index) in nameParts[4]"
             :key="index"
             :class="`name__letter--${char}`"
           >
@@ -77,7 +77,7 @@
     </div>
 
     <span ref="elDraggable" class="w-0" />
-  </h1>
+  </NuxtLink>
 </template>
 
 <script>
@@ -98,14 +98,12 @@ export default {
     const isAtMaxWidth = ref(false)
 
     const numberOfExtraChars = ref(0)
-    const jaStretchedChars = ref('')
-    const haStretchedChars = ref('')
 
-    const nameParts = ['Ja', 'rod Ha', 'rgreaves']
+    const nameParts = reactive(['Ja', '', 'rod Ha', '', 'rgreaves'])
 
     function initStretcher () {
       const { right: containerRight } =
-        elContainer.value.getBoundingClientRect()
+        elContainer.value.$el.getBoundingClientRect()
       const { right: draggableRight } =
         elDraggable.value.getBoundingClientRect()
       const { right: spacerRight } = elSpacer.value.getBoundingClientRect()
@@ -120,7 +118,7 @@ export default {
 
       draggable = Draggable.create(elDraggable.value, {
         bounds,
-        trigger: elContainer.value,
+        trigger: elContainer.value.$el,
         type: 'x',
         liveSnap: (value) => {
           return Math.min(
@@ -146,7 +144,7 @@ export default {
       let haString = ''
 
       for (let i = 0; i < extraChars; i++) {
-        const initialHas = 4
+        const initialHas = 2
 
         const mod = i - initialHas * 2 >= 0 ? 4 : 2
 
@@ -161,8 +159,8 @@ export default {
         }
       }
 
-      jaStretchedChars.value = jaString
-      haStretchedChars.value = haString
+      nameParts[1] = jaString
+      nameParts[3] = haString
     })
 
     async function resetStretcher () {
@@ -173,7 +171,8 @@ export default {
       initStretcher()
     }
 
-    onMounted(() => {
+    onMounted(async () => {
+      await nextTick()
       initStretcher()
       window.addEventListener('resize', resetStretcher)
     })
@@ -188,9 +187,7 @@ export default {
       elDraggable,
       elIndicator,
       elSpacer,
-      haStretchedChars,
       isAtMaxWidth,
-      jaStretchedChars,
       nameParts,
     }
   },
@@ -199,7 +196,7 @@ export default {
 
 <style lang="scss" scoped>
 .name {
-  @apply relative flex text-3xl md:text-5xl xl:text-6xl w-full align-baseline font-serif font-medium -mt-2 overflow-y-hidden;
+  @apply relative flex text-3xl md:text-5xl xl:text-6xl w-full align-baseline font-serif font-medium -mt-2;
   $root: &;
   letter-spacing: -0.03em;
   line-height: 1.05;

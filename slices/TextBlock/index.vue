@@ -1,6 +1,8 @@
 <template>
   <ArticleSection>
-    <TextBlock :variation="slice.variation" v-bind="{ ...slice.primary }" />
+    <div class="max-w-5xl mx-auto">
+      <TextBlock :variation="slice.variation" v-bind="{ ...slice.primary }" />
+    </div>
   </ArticleSection>
 </template>
 

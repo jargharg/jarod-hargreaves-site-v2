@@ -32,7 +32,7 @@ a {
 
 @layer utilities {
   .container {
-    @apply mx-auto px-5 lg:px-10 xl:px-16;
+    @apply mx-auto px-5 lg:px-10;
     max-width: $max-w-container;
   }
 

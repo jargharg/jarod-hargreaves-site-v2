@@ -2,15 +2,13 @@
   <article class="pt-10">
     <NuxtSliceZone :slices="doc.slices" class="mb-10" />
 
-    <div class="border-t-2 border-black mb-6 py-10">
-      <div class="container mb-4">
-        <Heading level="2" class="text-xl">
-          Content Pages (user-selected documents in CMS)
-        </Heading>
-      </div>
-
-      <CardList :items="doc.pageLinks" />
-    </div>
+    <ul class="mb-6 py-10 container text-sm">
+      <li v-for="project in doc.projects" :key="project.id">
+        <NuxtLink :to="$prismic.asLink(project)" class="font-serif">
+          {{ project.title }}
+        </NuxtLink>
+      </li>
+    </ul>
   </article>
 </template>
 
@@ -20,14 +18,12 @@ import { mapPrismicContentRelationships } from '~/helpers/prismicMappers'
 
 export default {
   async setup () {
-    // @NOTE: this allows you to pull data from linked documents
-    // See https://prismic.io/docs/graphquery-rest-api for full details of the API
     const graphQuery = `{
       homepage {
         ...homepageFields
-        pageLinks {
-          link {
-            ...linkFields
+        projects {
+          project {
+            ...projectFields
           }
         }
       }
@@ -35,7 +31,7 @@ export default {
 
     const dataMapFunction = doc => ({
       ...doc,
-      pageLinks: mapPrismicContentRelationships(doc.pageLinks),
+      projects: mapPrismicContentRelationships(doc.projects),
     })
 
     const doc = await getDocumentFromPrismic('homepage', {

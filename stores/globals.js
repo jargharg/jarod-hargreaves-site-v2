@@ -5,7 +5,6 @@ export const useGlobalsStore = defineStore('globals', {
   state: () => {
     return {
       contact: {},
-      socialLinks: [],
     }
   },
 
@@ -25,12 +24,8 @@ export const useGlobalsStore = defineStore('globals', {
         ctaText: data.contactCtaText,
         number: data.contactNumber,
         email: data.contactEmailAddress,
-        address: data.contactAddress,
-        location: data.contactLocation,
-        mapLink: data.contactMapLink,
+        linkedInLink: data.linkedInLink,
       }
-
-      this.socialLinks = data.socialLinks
 
       return this
     },

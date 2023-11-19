@@ -1,9 +1,15 @@
 <template>
   <div v-if="src" v-bind="{ style }" class="relative">
     <nuxt-img
-      v-bind="{ alt, sizes, src, ...attrs }"
+      v-bind="{
+        alt,
+        sizes,
+        src,
+        ...attrs,
+        ...(lazy ? { loading: 'lazy' } : {}),
+      }"
       class="transition-opacity object-cover absolute w-full h-full"
-      :loading="lazy ? 'lazy' : ''"
+      placeholder
     />
   </div>
 </template>

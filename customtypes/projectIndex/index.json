@@ -1,6 +1,6 @@
 {
-  "id": "blogIndex",
-  "label": "Blog Index Page",
+  "id": "projectIndex",
+  "label": "[PAGE] Project Index",
   "format": "page",
   "repeatable": false,
   "status": true,
@@ -40,27 +40,9 @@
         "type": "StructuredText",
         "config": {
           "label": "Intro",
-          "placeholder": "Introduction text that appears above the blogs list",
+          "placeholder": "Introduction text that appears above the projects list",
           "allowTargetBlank": true,
           "multi": "paragraph,strong,em"
-        }
-      }
-    },
-    "Filters": {
-      "blogTags": {
-        "type": "Group",
-        "config": {
-          "label": "Tags",
-          "fields": {
-            "blogTag": {
-              "type": "Link",
-              "config": {
-                "label": "Blog Tag",
-                "select": "document",
-                "customtypes": ["blogTag"]
-              }
-            }
-          }
         }
       }
     }

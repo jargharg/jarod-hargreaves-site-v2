@@ -5,8 +5,8 @@ export const DOCUMENT_TYPES = {
   homepage: 'homepage',
   contentPage: 'contentPage',
   legalPage: 'legalPage',
-  blogIndex: 'blogIndex',
-  blogArticle: 'blogArticle',
+  projectIndex: 'projectIndex',
+  project: 'project',
 }
 
 const HOMEPAGE_DOC_TYPES = [
@@ -31,12 +31,12 @@ export default function (doc) {
     return `/legal/${doc.uid}/`
   }
 
-  if (doc.type === DOCUMENT_TYPES.blogIndex) {
-    return '/blogs/'
+  if (doc.type === DOCUMENT_TYPES.projectIndex) {
+    return '/projects/'
   }
 
-  if (doc.type === DOCUMENT_TYPES.blogArticle) {
-    return `/blogs/${doc.uid}/`
+  if (doc.type === DOCUMENT_TYPES.project) {
+    return `/projects/${doc.uid}/`
   }
 
   return null
