@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{
-      'text-sm lg:text-base leading-[1.05] tracking-tight': size === 'base',
+      'text-sm lg:text-base leading-[1.1] -tracking-[0.015em]': size === 'base',
       // add other sizes here
       'prose max-w-none': prose,
       'leading-7': !prose,

@@ -163,11 +163,15 @@ export default {
       nameParts[3] = haString
     })
 
-    async function resetStretcher () {
-      await sleep(100)
+    function killStretcher () {
       gsap.set(elDraggable.value, { clearProps: 'all' })
       draggable[0]?.kill()
       numberOfExtraChars.value = 0
+    }
+
+    async function resetStretcher () {
+      await sleep(100)
+      killStretcher()
       initStretcher()
     }
 
@@ -178,6 +182,7 @@ export default {
     })
 
     onUnmounted(() => {
+      killStretcher()
       window.removeEventListener('resize', resetStretcher)
     })
 
@@ -196,7 +201,7 @@ export default {
 
 <style lang="scss" scoped>
 .name {
-  @apply relative flex text-3xl md:text-5xl xl:text-6xl w-full align-baseline font-serif font-medium -mt-2;
+  @apply relative flex text-2xl md:text-4xl xl:text-5xl w-full align-baseline font-serif font-medium -mt-2;
   $root: &;
   letter-spacing: -0.03em;
   line-height: 1.05;

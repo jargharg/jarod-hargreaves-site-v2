@@ -2,7 +2,7 @@
   <div class="default-layout">
     <SiteHeader />
 
-    <main class="flex-1 w-screen min-h-[100dvh]">
+    <main class="flex flex-col flex-1 w-screen min-h-[100dvh]">
       <NuxtPage :transition="transition" />
     </main>
 
