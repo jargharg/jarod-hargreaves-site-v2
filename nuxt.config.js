@@ -7,7 +7,7 @@ import generateAllRoutesFromPrismic from './helpers/generateAllRoutesFromPrismic
 import smConfig from './slicemachine.config.json'
 
 const DEFAULT_SITE_URL = 'http://localhost:3000'
-const EXCLUDED_SITEMAP_ROUTES = ['/preview/', '/404/', '/slice-simulator/']
+const EXCLUDED_SITEMAP_ROUTES = ['/preview/', '/404/']
 
 if (!smConfig.apiEndpoint) {
   // eslint-disable-next-line no-console

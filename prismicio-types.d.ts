@@ -56,8 +56,6 @@ export type GlobalsDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
-
 /**
  * Item in *[PAGE] Homepage → Projects*
  */
@@ -107,15 +105,15 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   metaImage: prismic.ImageField<never> /**
-   * Slice Zone field in *[PAGE] Homepage*
+   * Intro field in *[PAGE] Homepage*
    *
-   * - **Field Type**: Slice Zone
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.slices[]
-   * - **Tab**: Article
-   * - **Documentation**: https://prismic.io/docs/field#slices
+   * - **API ID Path**: homepage.intro
+   * - **Tab**: Intro
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */;
-  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice> /**
+  intro: prismic.RichTextField /**
    * Projects field in *[PAGE] Homepage*
    *
    * - **Field Type**: Group
@@ -706,7 +704,6 @@ declare module "@prismicio/client" {
       GlobalsDocumentData,
       HomepageDocument,
       HomepageDocumentData,
-      HomepageDocumentDataSlicesSlice,
       HomepageDocumentDataProjectsItem,
       LegalPageDocument,
       LegalPageDocumentData,

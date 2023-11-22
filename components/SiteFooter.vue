@@ -1,9 +1,13 @@
 <template>
-  <footer class="pb-8 pt-40 -mt-20 bg-gradient-to-t from-yellow-100 font-medium text-sm tracking-normal leading-none">
+  <footer
+    class="pb-8 pt-40 -mt-20 bg-gradient-to-t from-yellow-100 font-medium text-sm tracking-normal leading-none"
+  >
     <div class="container">
       <div class="flex justify-between items-end">
         <div>
-          <CurrentTime />
+          <template v-if="timeOnSite">
+            You've been here for {{ timeOnSite }}! N1ce
+          </template>
         </div>
 
         <div class="flex flex-col gap-3 items-end">
@@ -54,6 +58,32 @@ import { useGlobalsStore } from '~/stores/globals'
 
 export default {
   async setup () {
+    const globalsStore = useGlobalsStore()
+    const contact = toRef(globalsStore, 'contact')
+
+    const timeOnSite = ref('')
+    let startTime = 0
+    let refreshInterval
+
+    const setTimeOnSite = () => {
+      const time = Date.now() - startTime
+      const minutes = Math.floor(time / 60000)
+      const seconds = ((time % 60000) / 1000).toFixed(0)
+
+      const minutesString =
+        minutes > 0 ? `${minutes} minute${minutes !== 1 ? 's' : ''} and ` : ''
+      const secondsString = seconds !== '0'
+        ? `${seconds} second${seconds !== '1' ? 's' : ''}`
+        : ''
+      timeOnSite.value = `${minutesString}${secondsString}`
+    }
+
+    onMounted(() => {
+      startTime = Date.now()
+      setTimeOnSite()
+      refreshInterval = setInterval(setTimeOnSite, 1000)
+    })
+
     const { client } = usePrismic()
     const type = 'siteFooter'
     let footer = {}
@@ -64,10 +94,8 @@ export default {
     } catch (e) {
       errorLog(e, { type })
     }
-    const globalsStore = useGlobalsStore()
-    const contact = toRef(globalsStore, 'contact')
 
-    return { footer, contact }
+    return { contact, footer, timeOnSite }
   },
 }
 </script>

@@ -4,8 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-$max-w-container: 1512px;
-
 *,
 *::after,
 *::before {
@@ -32,12 +30,7 @@ a {
 
 @layer utilities {
   .container {
-    @apply mx-auto px-5 lg:px-10;
-    max-width: $max-w-container;
-  }
-
-  .max-w-container {
-    max-width: $max-w-container;
+    @apply mx-auto px-5 lg:px-10 max-w-none;
   }
 }
 
@@ -70,7 +63,6 @@ a {
 
   &__BarContainer {
     @apply bg-white mx-auto py-4 px-5 lg:px-10;
-    width: $max-w-container;
   }
 
   &__ModalContent {

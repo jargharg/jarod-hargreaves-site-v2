@@ -35,19 +35,14 @@
         "type": "Image"
       }
     },
-    "Article": {
-      "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
+    "Intro": {
+      "intro": {
+        "type": "StructuredText",
         "config": {
-          "choices": {
-            "image_block": {
-              "type": "SharedSlice"
-            },
-            "text_block": {
-              "type": "SharedSlice"
-            }
-          }
+          "label": "Intro",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,hyperlink,strong,em"
         }
       }
     },

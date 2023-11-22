@@ -1,5 +1,6 @@
 <template>
   <div
+    class="body-text"
     :class="{
       'text-sm lg:text-base leading-[1.1] -tracking-[0.015em]': size === 'base',
       // add other sizes here
@@ -28,3 +29,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.body-text {
+  &:deep {
+    a {
+      font-weight: inherit;
+    }
+  }
+}
+</style>

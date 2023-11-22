@@ -2,7 +2,7 @@
   <section
     :class="{
       container: withContainer,
-      'my-6 md:my-10': withMargin,
+      'my-5': withMargin,
     }"
   >
     <slot />

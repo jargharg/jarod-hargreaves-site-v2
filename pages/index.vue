@@ -1,48 +1,27 @@
 <template>
-  <article ref="elContainer" class="pt-10 flex-1 container">
-    <ul class="mb-6 py-10 text-sm flex flex-wrap gap-10">
-      <li v-for="project in doc.projects" :key="project.id" ref="elProjects">
-        <NuxtLink
-          :to="$prismic.asLink(project)"
-          class="font-serif inline-flex flex-col gap-1"
-        >
-          <img src="/file.svg" class="h-20">
+  <article class="pt-10 flex-1 container flex flex-col">
+    <BodyText>
+      <prismic-rich-text
+        :field="doc.intro"
+        class="text-lg mb-10 max-w-[56ch]"
+      />
+    </BodyText>
 
-          <h2 class="bg-white px-2 py-1">
-            {{ project.title }}
-          </h2>
-        </NuxtLink>
-      </li>
-    </ul>
+    <div class="flex-1">
+      <Heading level="2" class="text-2xl">
+        Selected Work
+      </Heading>
+      <DraggableProjectsList :projects="doc.projects" />
+    </div>
   </article>
 </template>
 
 <script>
-import Draggable from 'gsap/Draggable'
 import { getDocumentFromPrismic } from '~/helpers/getDocumentFromPrismic'
 import { mapPrismicContentRelationships } from '~/helpers/prismicMappers'
 
 export default {
   async setup () {
-    const elContainer = ref(null)
-    const elProjects = ref([])
-    const zIndexes = ref([])
-
-    onMounted(() => {
-      zIndexes.value = Array.from(
-        { length: elProjects.value.length },
-        (_, i) => i + 1,
-      )
-      // @TODO zindexes
-
-      elProjects.value.forEach((elProject, i) => {
-        Draggable.create(elProject, {
-          bounds: elContainer.value,
-          onClick: () => {},
-        })
-      })
-    })
-
     const graphQuery = `{
       homepage {
         ...homepageFields
@@ -65,7 +44,7 @@ export default {
       dataMapFunction,
     })
 
-    return { doc, elContainer, elProjects }
+    return { doc }
   },
 }
 </script>

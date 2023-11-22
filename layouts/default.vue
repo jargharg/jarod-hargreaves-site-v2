@@ -7,7 +7,7 @@
     </main>
 
     <SiteFooter />
-
+    <!--
     <CookieControl>
       <template #bar>
         <div class="mb-4">
@@ -27,7 +27,7 @@
           </p>
         </div>
       </template>
-    </CookieControl>
+    </CookieControl> -->
 
     <div id="transitionBlock" class="transition-block">
       <img src="/smiley.svg" alt="">

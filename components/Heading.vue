@@ -27,6 +27,6 @@ export default {
 
 <style lang="scss" scoped>
 .heading {
-  @apply font-serif font-medium tracking-tighter;
+  @apply font-serif font-medium;
 }
 </style>
