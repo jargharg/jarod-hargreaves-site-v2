@@ -1,9 +1,6 @@
 <template>
-  <NuxtLink ref="elContainer" class="name" to="/">
-    <div
-      ref="elChar"
-      class="absolute opacity-0 not-sr-only pointer-events-none select-none"
-    >
+  <NuxtLink ref="elContainer" class="name group" to="/">
+    <div ref="elChar" class="absolute opacity-0 not-sr-only pointer-events-none select-none">
       h
     </div>
 
@@ -11,72 +8,43 @@
       Jarod Hargreaves
     </div>
 
-    <div
-      class="absolute flex items-baseline gap-2 not-sr-only"
-      aria-hidden="true"
-    >
-      <div class="flex">
+    <div class="absolute flex items-baseline gap-2 not-sr-only pr-1 bg-white z-10" aria-hidden="true">
+      <div class="flex items-baseline">
         <div>
-          <span
-            v-for="(char, index) in nameParts[0]"
-            :key="index"
-            :class="`name__letter--${char}`"
-          >
+          <span v-for="(char, index) in nameParts[0]" :key="index" :class="`name__letter--${char}`">
             {{ char }}
           </span>
         </div>
 
         <transition-group name="name-char" tag="div">
-          <span
-            v-for="(char, index) in nameParts[1]"
-            :key="index"
-            class="inline-block"
-            :class="`name__letter--${char}`"
-          >
+          <span v-for="(char, index) in nameParts[1]" :key="index" class="inline-block" :class="`name__letter--${char}`">
             {{ char }}
           </span>
         </transition-group>
 
         <div>
-          <span
-            v-for="(char, index) in nameParts[2]"
-            :key="index"
-            :class="`name__letter--${char}`"
-          >
+          <span v-for="(char, index) in nameParts[2]" :key="index" :class="`name__letter--${char}`">
             {{ char }}
           </span>
         </div>
 
         <transition-group name="name-char" tag="div">
-          <span
-            v-for="(char, index) in nameParts[3]"
-            :key="index"
-            :class="`name__letter--${char}`"
-            class="inline-block"
-          >
+          <span v-for="(char, index) in nameParts[3]" :key="index" :class="`name__letter--${char}`" class="inline-block">
             {{ char }}
           </span>
         </transition-group>
 
         <div>
-          <span
-            v-for="(char, index) in nameParts[4]"
-            :key="index"
-            :class="`name__letter--${char}`"
-          >
+          <span v-for="(char, index) in nameParts[4]" :key="index" :class="`name__letter--${char}`">
             {{ char }}
           </span>
         </div>
       </div>
-
-      <div
-        ref="elIndicator"
-        class="name__indicator"
-        :class="{ 'name__indicator--max': isAtMaxWidth }"
-      />
     </div>
 
-    <span ref="elDraggable" class="w-0" />
+    <span ref="elDraggable" class="name__draggable">
+      <img src="/drag-hand.svg" class="name__draggable__icon">
+    </span>
   </NuxtLink>
 </template>
 
@@ -109,7 +77,6 @@ export default {
       const { right: spacerRight } = elSpacer.value.getBoundingClientRect()
 
       const charWidth = elChar.value.offsetWidth
-      const indicatorWidth = elIndicator.value.offsetWidth
 
       const bounds = {
         left: elDraggable.value.offsetLeft,
@@ -120,21 +87,22 @@ export default {
         bounds,
         trigger: elContainer.value.$el,
         type: 'x',
-        liveSnap: (value) => {
-          return Math.min(
-            value - (value % charWidth),
-            containerRight - indicatorWidth,
-          )
-        },
+        // liveSnap: (value) => {
+        //   return Math.min(
+        //     value - (value % charWidth),
+        //     containerRight,
+        //   )
+        // },
+        zIndexBoost: false,
         onDrag: () => {
-          const { right: draggableRight } =
+          const { left: draggableLeft } =
             elDraggable.value.getBoundingClientRect()
 
           numberOfExtraChars.value = Math.floor(
-            (draggableRight - spacerRight - 10) / charWidth,
+            (draggableLeft - spacerRight) / charWidth,
           )
 
-          isAtMaxWidth.value = containerRight - draggableRight < charWidth
+          isAtMaxWidth.value = containerRight - draggableLeft < charWidth
         },
       })
     }
@@ -201,10 +169,9 @@ export default {
 
 <style lang="scss" scoped>
 .name {
-  @apply relative flex text-2xl md:text-4xl xl:text-5xl w-full align-baseline font-serif font-medium -mt-2;
+  @apply relative flex text-2xl md:text-4xl xl:text-5xl w-full align-baseline font-serif font-medium -mt-2 leading-none;
   $root: &;
   letter-spacing: -0.03em;
-  line-height: 1.05;
 
   &:hover {
     #{$root}__indicator::after {
@@ -212,16 +179,16 @@ export default {
     }
   }
 
-  &__indicator {
+  &__draggable {
+    @apply w-10 relative opacity-50 group-hover:opacity-100 transition-opacity;
+
     &::after {
-      @apply flex items-center justify-center h-full text-lg md:text-3xl p-1 brightness-0;
-      transition: filter 0.1s;
-      content: "👉";
+      content: "";
+      @apply absolute top-[60%] right-full w-40 md:w-80 border-b-2 border-black;
     }
 
-    &--max::after {
-      @apply brightness-100;
-      content: "🙃";
+    &__icon {
+      @apply absolute left-0 top-2 w-full h-full;
     }
   }
 

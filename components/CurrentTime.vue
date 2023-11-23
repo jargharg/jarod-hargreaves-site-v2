@@ -1,9 +1,11 @@
 <template>
-  <client-only>
-    <div class="current-time">
-      {{ currentTime }}
-    </div>
-  </client-only>
+  <div class="current-time">
+    <client-only>
+      <div>
+        {{ currentTime }}
+      </div>
+    </client-only>
+  </div>
 </template>
 
 <script>
