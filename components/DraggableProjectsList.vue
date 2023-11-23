@@ -10,7 +10,7 @@
       >
         <img src="/file.svg" class="h-28">
 
-        <h2 class="rounded-full bg-white px-4 py-1 text-xl text-center">
+        <h2 class="rounded-full bg-white px-4 py-1 text-xl text-center -tracking-[0.04em]">
           {{ project.title }}
         </h2>
       </NuxtLink>

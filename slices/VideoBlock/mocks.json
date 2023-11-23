@@ -1,0 +1,26 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"videoUrl": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"caption": {
+				"__TYPE__": "FieldContent",
+				"value": "mouth",
+				"type": "Text"
+			},
+			"fileSize": {
+				"__TYPE__": "FieldContent",
+				"value": "meat",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

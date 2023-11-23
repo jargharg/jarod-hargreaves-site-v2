@@ -56,7 +56,7 @@ export default {
 
 .transition-block {
   @apply fixed right-0 top-0 h-[100dvh] w-[100dvh];
-  @apply z-50 pointer-events-none select-none;
+  @apply z-[10001] pointer-events-none select-none;
   transform: translateX(100%);
 
   img {

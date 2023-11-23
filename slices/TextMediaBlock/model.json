@@ -1,8 +1,8 @@
 {
-  "id": "text_block",
+  "id": "text_and_media",
   "type": "SharedSlice",
-  "name": "Text Block",
-  "description": "Text Block",
+  "name": "Text + Media Block",
+  "description": "Text + Media Block",
   "variations": [
     {
       "id": "default",
@@ -27,13 +27,23 @@
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,hyperlink"
           }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 4000
+            },
+            "thumbnails": []
+          }
         }
       },
       "items": {}
     },
     {
-      "id": "textBlockWithCta",
-      "name": "Text Block with CTA",
+      "id": "withVideo",
+      "name": "With Video",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -55,19 +65,12 @@
             "multi": "paragraph,strong,em,hyperlink"
           }
         },
-        "ctaLink": {
+        "videoUrl": {
           "type": "Link",
           "config": {
-            "label": "CTA Link",
+            "label": "Video URL",
             "placeholder": "",
-            "select": null
-          }
-        },
-        "ctaLabel": {
-          "type": "Text",
-          "config": {
-            "label": "CTA Label",
-            "placeholder": ""
+            "select": "web"
           }
         }
       },

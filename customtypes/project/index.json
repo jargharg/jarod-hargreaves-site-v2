@@ -134,7 +134,13 @@
             "text_block": {
               "type": "SharedSlice"
             },
-            "image_block": {
+            "video_block": {
+              "type": "SharedSlice"
+            },
+            "carousel_block": {
+              "type": "SharedSlice"
+            },
+            "text_and_media": {
               "type": "SharedSlice"
             }
           }

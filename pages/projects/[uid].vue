@@ -15,9 +15,9 @@
           :project-link="$prismic.asLink(doc.projectLink)"
         />
       </div>
-    </div>
 
-    <NuxtSliceZone :slices="doc.slices3" />
+      <NuxtSliceZone :slices="doc.slices3" />
+    </div>
   </article>
 </template>
 

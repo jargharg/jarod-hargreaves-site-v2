@@ -1,10 +1,5 @@
 <template>
-  <section
-    :class="{
-      container: withContainer,
-      'my-5': withMargin,
-    }"
-  >
+  <section class="article-section">
     <slot />
   </section>
 </template>
@@ -16,11 +11,13 @@ export default {
       type: Boolean,
       default: true,
     },
-
-    withMargin: {
-      type: Boolean,
-      default: true,
-    },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.article-section {
+  @apply py-5 border-b-2 border-black max-w-6xl mx-auto;
+  @apply last-of-type:border-b-0 last-of-type:pb-0 first-of-type:pt-0;
+}
+</style>

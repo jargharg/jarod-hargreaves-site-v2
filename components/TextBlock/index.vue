@@ -1,30 +1,27 @@
 <template>
-  <component :is="component" v-bind="{ ...$attrs, ...$props }" />
+  <div class="flex flex-col">
+    <h2 v-if="heading" class="font-medium mb-2">
+      {{ heading }}
+    </h2>
+
+    <BodyText v-if="$prismic.asText(body)">
+      <prismic-rich-text :field="body" />
+    </BodyText>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    variation: {
+    heading: {
       type: String,
-      default: 'default',
+      default: null,
     },
-  },
 
-  setup (props) {
-    const componentsMap = {
-      default: resolveComponent('TextBlockDefault'),
-      textBlockWithCta: resolveComponent('TextBlockWithCta'),
-    }
-
-    const component = computed(() => {
-      if (componentsMap[props.variation]) {
-        return componentsMap[props.variation]
-      }
-      throw new Error(`Unknown variation: ${props.variation}`)
-    })
-
-    return { component }
+    body: {
+      type: Array,
+      required: true,
+    },
   },
 }
 </script>

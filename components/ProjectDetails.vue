@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <div class="flex flex-wrap gap-5 justify-between">
+    <div class="flex flex-wrap gap-5 justify-between leading-tight">
       <p v-if="tech.length">
         Tech: {{ tech.map(({ item }) => item).join(", ") }}
       </p>

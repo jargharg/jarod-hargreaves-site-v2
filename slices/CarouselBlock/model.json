@@ -1,0 +1,60 @@
+{
+  "id": "carousel_block",
+  "type": "SharedSlice",
+  "name": "Carousel Block",
+  "description": "Carousel Block",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "videoUrl": {
+          "type": "Link",
+          "config": {
+            "label": "Video URL",
+            "placeholder": "",
+            "select": "web"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 4000
+            },
+            "thumbnails": []
+          }
+        },
+        "backgroundColor": {
+          "type": "Color",
+          "config": {
+            "label": "Background Colour",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

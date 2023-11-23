@@ -242,7 +242,11 @@ export interface ProjectDocumentDataTechItem {
   item: prismic.KeyTextField;
 }
 
-type ProjectDocumentDataSlices3Slice = TextBlockSlice | ImageBlockSlice;
+type ProjectDocumentDataSlices3Slice =
+  | TextBlockSlice
+  | VideoBlockSlice
+  | CarouselBlockSlice
+  | TextAndMediaSlice;
 
 /**
  * Content for [PAGE] Project documents
@@ -481,98 +485,203 @@ export type AllDocumentTypes =
   | SiteFooterDocument;
 
 /**
- * Primary content in *Image Block → Primary*
+ * Primary content in *Carousel Block → Items*
  */
-export interface ImageBlockSliceDefaultPrimary {
+export interface CarouselBlockSliceDefaultItem {
   /**
-   * Image field in *Image Block → Primary*
+   * Heading field in *Carousel Block → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_block.items[].heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Body field in *Carousel Block → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_block.items[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Video URL field in *Carousel Block → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_block.items[].videoUrl
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  videoUrl: prismic.LinkField;
+
+  /**
+   * Image field in *Carousel Block → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: image_block.primary.image
+   * - **API ID Path**: carousel_block.items[].image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<"SmallScreen">;
+  image: prismic.ImageField<never>;
 
   /**
-   * Caption field in *Image Block → Primary*
+   * Background Colour field in *Carousel Block → Items*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Optional caption for the image
-   * - **API ID Path**: image_block.primary.caption
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_block.items[].backgroundColor
+   * - **Documentation**: https://prismic.io/docs/field#color
    */
-  caption: prismic.KeyTextField;
+  backgroundColor: prismic.ColorField;
 }
 
 /**
- * Default variation for Image Block Slice
+ * Default variation for Carousel Block Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ImageBlockSliceDefault = prismic.SharedSliceVariation<
+export type CarouselBlockSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<ImageBlockSliceDefaultPrimary>,
-  never
+  Record<string, never>,
+  Simplify<CarouselBlockSliceDefaultItem>
 >;
 
 /**
- * Primary content in *Image Block → Primary*
+ * Slice variation for *Carousel Block*
  */
-export interface ImageBlockSliceImageBlockFullScreenPrimary {
+type CarouselBlockSliceVariation = CarouselBlockSliceDefault;
+
+/**
+ * Carousel Block Shared Slice
+ *
+ * - **API ID**: `carousel_block`
+ * - **Description**: Carousel Block
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselBlockSlice = prismic.SharedSlice<
+  "carousel_block",
+  CarouselBlockSliceVariation
+>;
+
+/**
+ * Primary content in *Text + Media Block → Primary*
+ */
+export interface TextAndMediaSliceDefaultPrimary {
   /**
-   * Image field in *Image Block → Primary*
+   * Heading field in *Text + Media Block → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_and_media.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Body field in *Text + Media Block → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_and_media.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Image field in *Text + Media Block → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: image_block.primary.image
+   * - **API ID Path**: text_and_media.primary.image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<"wide" | "square" | "portrait">;
-
-  /**
-   * Caption field in *Image Block → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Optional caption for the image
-   * - **API ID Path**: image_block.primary.caption
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  caption: prismic.KeyTextField;
+  image: prismic.ImageField<never>;
 }
 
 /**
- * Image Block - Full Screen variation for Image Block Slice
+ * Default variation for Text + Media Block Slice
  *
- * - **API ID**: `imageBlockFullScreen`
+ * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ImageBlockSliceImageBlockFullScreen = prismic.SharedSliceVariation<
-  "imageBlockFullScreen",
-  Simplify<ImageBlockSliceImageBlockFullScreenPrimary>,
+export type TextAndMediaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextAndMediaSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *Image Block*
+ * Primary content in *Text + Media Block → Primary*
  */
-type ImageBlockSliceVariation =
-  | ImageBlockSliceDefault
-  | ImageBlockSliceImageBlockFullScreen;
+export interface TextAndMediaSliceWithVideoPrimary {
+  /**
+   * Heading field in *Text + Media Block → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_and_media.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Body field in *Text + Media Block → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_and_media.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Video URL field in *Text + Media Block → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_and_media.primary.videoUrl
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  videoUrl: prismic.LinkField;
+}
 
 /**
- * Image Block Shared Slice
+ * With Video variation for Text + Media Block Slice
  *
- * - **API ID**: `image_block`
- * - **Description**: Image Block
+ * - **API ID**: `withVideo`
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ImageBlockSlice = prismic.SharedSlice<
-  "image_block",
-  ImageBlockSliceVariation
+export type TextAndMediaSliceWithVideo = prismic.SharedSliceVariation<
+  "withVideo",
+  Simplify<TextAndMediaSliceWithVideoPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Text + Media Block*
+ */
+type TextAndMediaSliceVariation =
+  | TextAndMediaSliceDefault
+  | TextAndMediaSliceWithVideo;
+
+/**
+ * Text + Media Block Shared Slice
+ *
+ * - **API ID**: `text_and_media`
+ * - **Description**: Text + Media Block
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextAndMediaSlice = prismic.SharedSlice<
+  "text_and_media",
+  TextAndMediaSliceVariation
 >;
 
 /**
@@ -690,6 +799,71 @@ export type TextBlockSlice = prismic.SharedSlice<
   TextBlockSliceVariation
 >;
 
+/**
+ * Primary content in *Video Block → Primary*
+ */
+export interface VideoBlockSliceDefaultPrimary {
+  /**
+   * Video URL field in *Video Block → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_block.primary.videoUrl
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  videoUrl: prismic.LinkField;
+
+  /**
+   * Caption field in *Video Block → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_block.primary.caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+
+  /**
+   * File Size field in *Video Block → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_block.primary.fileSize
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  fileSize: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Video Block Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Video Block*
+ */
+type VideoBlockSliceVariation = VideoBlockSliceDefault;
+
+/**
+ * Video Block Shared Slice
+ *
+ * - **API ID**: `video_block`
+ * - **Description**: Video Block
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoBlockSlice = prismic.SharedSlice<
+  "video_block",
+  VideoBlockSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -718,18 +892,26 @@ declare module "@prismicio/client" {
       SiteFooterDocumentData,
       SiteFooterDocumentDataMenuItemsItem,
       AllDocumentTypes,
-      ImageBlockSlice,
-      ImageBlockSliceDefaultPrimary,
-      ImageBlockSliceImageBlockFullScreenPrimary,
-      ImageBlockSliceVariation,
-      ImageBlockSliceDefault,
-      ImageBlockSliceImageBlockFullScreen,
+      CarouselBlockSlice,
+      CarouselBlockSliceDefaultItem,
+      CarouselBlockSliceVariation,
+      CarouselBlockSliceDefault,
+      TextAndMediaSlice,
+      TextAndMediaSliceDefaultPrimary,
+      TextAndMediaSliceWithVideoPrimary,
+      TextAndMediaSliceVariation,
+      TextAndMediaSliceDefault,
+      TextAndMediaSliceWithVideo,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceTextBlockWithCtaPrimary,
       TextBlockSliceVariation,
       TextBlockSliceDefault,
       TextBlockSliceTextBlockWithCta,
+      VideoBlockSlice,
+      VideoBlockSliceDefaultPrimary,
+      VideoBlockSliceVariation,
+      VideoBlockSliceDefault,
     };
   }
 }

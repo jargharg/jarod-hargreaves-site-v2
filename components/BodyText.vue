@@ -36,6 +36,10 @@ export default {
     a {
       font-weight: inherit;
     }
+
+    p {
+      @apply my-2;
+    }
   }
 }
 </style>

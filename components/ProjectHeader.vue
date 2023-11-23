@@ -4,7 +4,6 @@
       :image="project.heroImage"
       :with-dimensions="false"
       :lazy="false"
-      :modifiers="{ monochrome: '66aadd', q: 30 }"
     />
 
     <div
@@ -70,7 +69,7 @@ export default {
   }
 
   &--la {
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
   }
 
   &--an {
