@@ -4,7 +4,18 @@
   </SliceSimulator>
 </template>
 
-<script setup>
+<script>
 import { SliceSimulator } from '@slicemachine/adapter-nuxt/simulator'
 import { components } from '~/slices'
+
+export default {
+  components: {
+    SliceSimulator,
+  },
+
+  layout: 'sliceSimulator',
+  setup () {
+    return { components }
+  },
+}
 </script>
