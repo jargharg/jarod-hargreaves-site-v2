@@ -1,16 +1,10 @@
 <template>
-  <ul
-    ref="elContainer"
-    class="mb-6 py-10 text-sm flex flex-wrap gap-10 relative"
-  >
+  <ul ref="elContainer" class="mb-6 py-10 text-sm flex flex-wrap gap-10 relative">
     <li v-for="project in projects" :key="project.id" ref="elProjects">
-      <NuxtLink
-        :to="$prismic.asLink(project)"
-        class="font-serif inline-flex flex-col gap-1"
-      >
+      <NuxtLink :to="$prismic.asLink(project)" class="font-serif inline-flex flex-col gap-1">
         <img src="/file.svg" class="h-28">
 
-        <h2 class="rounded-full bg-white px-4 py-1 text-xl text-center -tracking-[0.04em]">
+        <h2 class="rounded-full bg-white px-4 py-1 text-xl text-center">
           {{ project.title }}
         </h2>
       </NuxtLink>

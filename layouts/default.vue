@@ -6,7 +6,7 @@
       <NuxtPage :transition="transition" />
     </main>
 
-    <SiteFooter />
+    <LazySiteFooter />
     <!--
     <CookieControl>
       <template #bar>

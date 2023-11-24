@@ -2,19 +2,21 @@
   <div class="relative video-with-controls">
     <video
       ref="elVideo"
-      autoplay
+      :autoplay="autoplay"
       muted
       loop
       :src="src"
-      class="max-w-none w-full h-full object-cover"
+      class="max-w-none w-full h-full object-cover object-top"
     />
 
     <button
       :aria-label="isPlaying ? 'Pause' : 'Play'"
-      class="absolute bottom-6 right-6 font-medium text-xs bg-white border-2 rounded-full px-2 py-1"
+      class="absolute bottom-0 right-0 p-10 opacity-75 hover:opacity-100 transition-opacity"
       @click="onClickToggle"
     >
-      {{ isPlaying ? "Pause" : "Play" }}
+      <span class="font-medium text-xs bg-white rounded-full px-2 py-1">
+        {{ isPlaying ? "Pause" : "Play" }}
+      </span>
     </button>
   </div>
 </template>
@@ -29,15 +31,16 @@ export default {
   },
 
   setup () {
+    const autoplay = ref(true) // @TODO hook up with carbon controls
     const elVideo = ref(null)
-    const isPlaying = ref(true)
+    const isPlaying = ref(autoplay.value)
 
     const onClickToggle = () => {
       isPlaying.value = !isPlaying.value
       elVideo.value.paused ? elVideo.value.play() : elVideo.value.pause()
     }
 
-    return { elVideo, isPlaying, onClickToggle }
+    return { autoplay, elVideo, isPlaying, onClickToggle }
   },
 }
 </script>

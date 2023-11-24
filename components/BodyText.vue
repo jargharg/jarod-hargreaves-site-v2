@@ -38,7 +38,7 @@ export default {
     }
 
     p {
-      @apply my-2;
+      @apply my-2 first-of-type:mt-0 last-of-type:mb-0;
     }
   }
 }

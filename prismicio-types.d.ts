@@ -485,6 +485,21 @@ export type AllDocumentTypes =
   | SiteFooterDocument;
 
 /**
+ * Primary content in *Carousel Block → Primary*
+ */
+export interface CarouselBlockSliceDefaultPrimary {
+  /**
+   * Background Colour field in *Carousel Block → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_block.primary.backgroundColor
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  backgroundColor: prismic.ColorField;
+}
+
+/**
  * Primary content in *Carousel Block → Items*
  */
 export interface CarouselBlockSliceDefaultItem {
@@ -527,16 +542,6 @@ export interface CarouselBlockSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
-
-  /**
-   * Background Colour field in *Carousel Block → Items*
-   *
-   * - **Field Type**: Color
-   * - **Placeholder**: *None*
-   * - **API ID Path**: carousel_block.items[].backgroundColor
-   * - **Documentation**: https://prismic.io/docs/field#color
-   */
-  backgroundColor: prismic.ColorField;
 }
 
 /**
@@ -548,7 +553,7 @@ export interface CarouselBlockSliceDefaultItem {
  */
 export type CarouselBlockSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<CarouselBlockSliceDefaultPrimary>,
   Simplify<CarouselBlockSliceDefaultItem>
 >;
 
@@ -893,6 +898,7 @@ declare module "@prismicio/client" {
       SiteFooterDocumentDataMenuItemsItem,
       AllDocumentTypes,
       CarouselBlockSlice,
+      CarouselBlockSliceDefaultPrimary,
       CarouselBlockSliceDefaultItem,
       CarouselBlockSliceVariation,
       CarouselBlockSliceDefault,

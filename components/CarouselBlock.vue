@@ -1,17 +1,12 @@
 <template>
   <div class="columns">
     <div class="flex flex-col justify-between gap-10">
-      <div>
-        <button
-          v-for="(item, index) in items"
-          :key="index"
-          class="text-left relative mb-4"
-          @click="onClickLabel(index)"
-        >
-          <IconArrowRight
-            class="absolute top-1 right-full h-3 pr-2 opacity-0 transition-opacity duration-500"
-            :class="{ 'opacity-100': index === activeIndex }"
-          />
+      <div class="flex flex-col gap-5">
+        <button v-for="(item, index) in items" :key="index" class="text-left relative" @click="onClickLabel(index)">
+          <!-- @TODO FLIP between maybe with a curve? -->
+          <transition>
+            <IconArrowRight v-if="index === activeIndex" class="absolute top-1 right-full h-3 pr-2" />
+          </transition>
 
           <h2 v-if="item.heading" class="font-medium mb-1">
             {{ item.heading }}
@@ -21,35 +16,35 @@
         </button>
       </div>
 
-      <div class="flex gap-2 justify-between flex-row-reverse">
+      <div class="flex gap-2 justify-between items-end">
+        <button class="carousel__play-button" :aria-label="isPlaying ? 'Pause' : 'Play'" @click="onClickPlayToggle">
+          {{ isPlaying ? "Pause" : "Play" }}
+
+          <svg
+            viewBox="0 0 1 1"
+            preserveAspectRatio="none"
+            class="mix-blend-difference fill-white absolute -top-0.5 -left-0.5 w-[calc(100%+4px)] h-[calc(100%+4px)]"
+            role="presentation"
+          >
+            <path ref="elPlayIndicator" d="M0,0 H1 V1 H0 Z" />
+          </svg>
+        </button>
+
         <div class="font-medium">
           {{ activeIndex + 1 }}/{{ items.length }}
         </div>
-
-        <button
-          class="font-medium text-xs border-black border-2 rounded-full px-2 py-1 focus-visible:outline-offset-4"
-          @click="isPlaying = !isPlaying"
-        >
-          {{ isPlaying ? "Pause" : "Play" }}
-        </button>
       </div>
     </div>
 
-    <div
-      class="relative min-h-[80vh] p-10 overflow-hidden"
-      :style="{ backgroundColor: 'black' }"
-    >
+    <div class="relative min-h-[80vh] p-10 overflow-hidden" :style="{ backgroundColor }">
       <template v-for="(item, index) in items" :key="index">
         <transition name="fade">
-          <div v-show="index === activeIndex" class="absolute inset-0">
-            <div
-              class="absolute inset-10"
-              :style="{ backgroundColor: item.backgroundColor ?? 'black' }"
-            >
+          <div v-if="index === activeIndex" class="absolute inset-0">
+            <div class="absolute inset-10">
               <VideoWithControls
                 v-if="$prismic.asLink(item.videoUrl)"
                 :src="$prismic.asLink(item.videoUrl)"
-                class="rounded-[50px] overflow-hidden h-full w-full"
+                class="h-full w-full"
               />
 
               <PrismicSizedImage
@@ -68,8 +63,15 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+
 export default {
   props: {
+    backgroundColor: {
+      type: String,
+      default: 'black',
+    },
+
     items: {
       type: Array,
       required: true,
@@ -77,24 +79,54 @@ export default {
   },
 
   setup (props) {
+    const elPlayIndicator = ref(null)
+
     const activeIndex = ref(0)
     const isPlaying = ref(true)
+
+    let carouselAnimation
+
+    const onClickPlayToggle = () => {
+      isPlaying.value = !isPlaying.value
+    }
 
     const onClickLabel = (index) => {
       isPlaying.value = false
       activeIndex.value = index
+      carouselAnimation.progress(0.01)
     }
 
     onMounted(() => {
-      setInterval(() => {
-        if (!isPlaying.value) {
-          return
+      carouselAnimation = gsap.timeline({ repeat: -1 })
+        .set(elPlayIndicator.value, { scaleX: 0, transformOrigin: 'left' })
+        .to(elPlayIndicator.value, { scaleX: 1, duration: 10, ease: 'none', autoRound: false })
+        .add(() => {
+          if (isPlaying.value) {
+            activeIndex.value = (activeIndex.value + 1) % props.items.length
+          }
+        })
+        // .set(elPlayIndicator.value, { scaleX: 1, transformOrigin: 'right' })
+        // .to(elPlayIndicator.value, { scaleX: 0, duration: 5, ease: 'none', autoRound: false })
+        // .add(() => {
+        //   if (isPlaying.value) {
+        //     activeIndex.value = (activeIndex.value + 1) % props.items.length
+        //   }
+        // })
+
+      watch(isPlaying, (isPlaying) => {
+        if (isPlaying) {
+          carouselAnimation.play()
+        } else {
+          carouselAnimation.pause()
         }
-        activeIndex.value = (activeIndex.value + 1) % props.items.length
-      }, 5000)
+      })
     })
 
-    return { activeIndex, isPlaying, onClickLabel }
+    onUnmounted(() => {
+      carouselAnimation.kill()
+    })
+
+    return { activeIndex, elPlayIndicator, isPlaying, onClickLabel, onClickPlayToggle }
   },
 }
 </script>
@@ -108,6 +140,13 @@ export default {
   }
 }
 
+.carousel {
+  &__play-button {
+    @apply bg-white text-black border-black border-2 px-2 py-1 font-medium text-xs;
+    @apply relative rounded-full overflow-hidden focus-visible:outline-offset-4;
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s linear;
@@ -117,22 +156,11 @@ export default {
   }
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transform: translateY(-100%);
-    opacity: 1;
-  }
+.fade-enter-from {
+  @apply motion-reduce:opacity-0 motion-safe:translate-y-full;
 }
 
-.fade-enter-from {
-  opacity: 0;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transform: translateY(100%);
-    opacity: 1;
-  }
+.fade-leave-to {
+  @apply motion-reduce:opacity-100 motion-safe:-translate-y-full;
 }
 </style>

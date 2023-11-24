@@ -11,7 +11,15 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {},
+      "primary": {
+        "backgroundColor": {
+          "type": "Color",
+          "config": {
+            "label": "Background Colour",
+            "placeholder": ""
+          }
+        }
+      },
       "items": {
         "heading": {
           "type": "Text",
@@ -45,13 +53,6 @@
               "width": 4000
             },
             "thumbnails": []
-          }
-        },
-        "backgroundColor": {
-          "type": "Color",
-          "config": {
-            "label": "Background Colour",
-            "placeholder": ""
           }
         }
       }

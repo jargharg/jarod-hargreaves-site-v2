@@ -4,11 +4,11 @@
       <BodyText>
         <prismic-rich-text
           :field="doc.intro"
-          class="text-lg mb-10 max-w-[56ch]"
+          class="text-lg mb-10 leading-[1.15] max-w-[56ch]"
         />
       </BodyText>
 
-      <div
+      <!-- <div
         ref="elHead"
         class="absolute top-4 right-32 w-[20vw] z-[10000] hidden xl:block"
       >
@@ -17,7 +17,7 @@
           alt="Photo of me"
           class="w-full"
         >
-      </div>
+      </div> -->
     </div>
 
     <div class="flex-1">

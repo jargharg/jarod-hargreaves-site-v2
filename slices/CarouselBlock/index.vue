@@ -1,6 +1,6 @@
 <template>
   <ArticleSection>
-    <CarouselBlock :items="slice.items" />
+    <CarouselBlock :items="slice.items" :background-color="slice.primary.backgroundColor" />
   </ArticleSection>
 </template>
 
