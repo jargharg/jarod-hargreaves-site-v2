@@ -4,8 +4,8 @@
       <div class="flex flex-col gap-5">
         <button v-for="(item, index) in items" :key="index" class="text-left relative" @click="onClickLabel(index)">
           <!-- @TODO FLIP between maybe with a curve? -->
-          <transition>
-            <IconArrowRight v-if="index === activeIndex" class="absolute top-1 right-full h-3 pr-2" />
+          <transition @enter="onArrowEnter" @leave="onArrowLeave">
+            <IconArrowRight v-if="index === activeIndex" class="absolute top-1 right-full h-2.5 md:h-3 pr-1 md:pr-2" />
           </transition>
 
           <h2 v-if="item.heading" class="font-medium mb-1">
@@ -96,6 +96,27 @@ export default {
       carouselAnimation.progress(0.01)
     }
 
+    let previousArrowLocation = 0
+
+    const onArrowLeave = (el, onComplete) => {
+      previousArrowLocation = el.getBoundingClientRect().top
+      onComplete()
+    }
+
+    const onArrowEnter = (el, onComplete) => {
+      const currentLocation = el.getBoundingClientRect().top
+      const y = previousArrowLocation - currentLocation
+
+      gsap.timeline({ onComplete })
+        .to(el, { x: -20, ease: 'power4.out', duration: 0.2, rotate: y < 0 ? 75 : -75 })
+        .to(el, { x: 0, ease: 'power2.out', duration: 0.6, rotate: 0 })
+        .fromTo(
+          el,
+          { y },
+          { y: 0, duration: 0.5, ease: 'power4.out' },
+          0)
+    }
+
     onMounted(() => {
       carouselAnimation = gsap.timeline({ repeat: -1 })
         .set(elPlayIndicator.value, { scaleX: 0, transformOrigin: 'left' })
@@ -105,13 +126,6 @@ export default {
             activeIndex.value = (activeIndex.value + 1) % props.items.length
           }
         })
-        // .set(elPlayIndicator.value, { scaleX: 1, transformOrigin: 'right' })
-        // .to(elPlayIndicator.value, { scaleX: 0, duration: 5, ease: 'none', autoRound: false })
-        // .add(() => {
-        //   if (isPlaying.value) {
-        //     activeIndex.value = (activeIndex.value + 1) % props.items.length
-        //   }
-        // })
 
       watch(isPlaying, (isPlaying) => {
         if (isPlaying) {
@@ -126,7 +140,7 @@ export default {
       carouselAnimation.kill()
     })
 
-    return { activeIndex, elPlayIndicator, isPlaying, onClickLabel, onClickPlayToggle }
+    return { activeIndex, elPlayIndicator, isPlaying, onClickLabel, onClickPlayToggle, onArrowEnter, onArrowLeave }
   },
 }
 </script>
