@@ -12,11 +12,16 @@
   font-smoothing: antialiased;
   backface-visibility: hidden;
   font-kerning: normal;
+  text-rendering: optimizeLegibility;
 }
 
 html,
 body {
   @apply tracking-tight leading-none;
+  
+  &.dark-mode {
+    @apply bg-black text-white;
+  }
 }
 
 button,

@@ -35,6 +35,7 @@ export default {
   &:deep {
     a {
       font-weight: inherit;
+      color: inherit;
     }
 
     p {

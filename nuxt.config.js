@@ -187,6 +187,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    '@nuxtjs/color-mode',
     '@nuxtjs/prismic',
     '@nuxt/image',
     '@nuxtjs/robots',

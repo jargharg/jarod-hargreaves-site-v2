@@ -8,7 +8,7 @@
       Jarod Hargreaves
     </div>
 
-    <div class="absolute flex items-baseline gap-2 not-sr-only pr-1 bg-white z-10" aria-hidden="true">
+    <div class="absolute flex items-baseline gap-2 not-sr-only pr-1 bg-white dark:bg-black z-10" aria-hidden="true">
       <div class="flex items-baseline">
         <div>
           <span v-for="(char, index) in nameParts[0]" :key="index" :class="`name__letter--${char}`">
@@ -43,7 +43,7 @@
     </div>
 
     <span ref="elDraggable" class="name__draggable">
-      <img src="/drag-hand.svg" class="name__draggable__icon">
+      <IconDragHand class="name__draggable__icon" />
     </span>
   </NuxtLink>
 </template>
@@ -184,7 +184,7 @@ export default {
 
     &::after {
       content: "";
-      @apply absolute top-[60%] right-full w-40 md:w-80 border-b-2 border-black;
+      @apply absolute top-[60%] right-full w-40 md:w-80 border-b-2 border-black dark:border-white;
     }
 
     &__icon {
@@ -232,7 +232,8 @@ export default {
 }
 
 .name-char-enter-active {
-  @apply transition-all duration-200;
+  @apply transition-all duration-300;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 
 .name-char-enter-from {
