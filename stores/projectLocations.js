@@ -32,6 +32,11 @@ export const useProjectLocationsStore = defineStore('projectLocations', {
       setData(WINDOW_DIMENSIONS_KEY, this.windowDimensions)
     },
 
+    resetLocations () {
+      this.locations = {}
+      setData(PROJECT_LOCATIONS_KEY, this.locations)
+    },
+
     setPreferencesFromStorage () {
       this.locations = nuxtStorage.localStorage.getData(PROJECT_LOCATIONS_KEY) ?? this.locations
       this.windowDimensions = nuxtStorage.localStorage.getData(WINDOW_DIMENSIONS_KEY) ?? this.windowDimensions
