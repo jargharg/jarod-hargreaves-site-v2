@@ -11,10 +11,11 @@
 
     <button
       :aria-label="isPlaying ? 'Pause' : 'Play'"
-      class="absolute bottom-0 right-0 p-10 opacity-75 hover:opacity-100 transition-opacity"
+      class="absolute inset-0 opacity-0 bg-black bg-opacity-0 focus-visible:bg-opacity-20 hover:bg-opacity-20 focus-visible:opacity-100 hover:opacity-100 transition-all"
+      :class="{ 'opacity-100': !isPlaying }"
       @click="onClickToggle"
     >
-      <span class="font-medium text-xs bg-white rounded-full px-2 py-1">
+      <span class="absolute bottom-10 right-10 font-medium text-xs bg-white rounded-full px-2 py-1">
         {{ isPlaying ? "Pause" : "Play" }}
       </span>
     </button>
