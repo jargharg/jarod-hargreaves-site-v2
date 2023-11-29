@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="pb-8 pt-40 -mt-20 bg-gradient-to-t from-yellow-100 font-medium text-sm tracking-normal leading-none"
+    class="pb-8 pt-40 -mt-20 bg-gradient-to-t from-[#F8FA96] font-medium text-sm tracking-normal leading-none"
   >
     <div class="container">
       <div class="flex justify-between items-end">

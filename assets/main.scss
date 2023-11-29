@@ -17,8 +17,16 @@ html,
 body {
   @apply tracking-tight leading-none;
 
+  ::selection {
+    @apply bg-black text-white;
+  }
+  
   &.dark-mode {
     @apply bg-black text-white;
+
+    ::selection {
+      @apply bg-white text-black;
+    }
   }
 }
 
