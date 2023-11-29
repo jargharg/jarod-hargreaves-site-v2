@@ -183,7 +183,7 @@ export default {
 
 <style lang="scss" scoped>
 .projects-list {
-  @apply mb-6 py-20 text-sm grid gap-x-28 gap-y-28 md:gap-x-16 md:gap-y-10 relative px-10;
+  @apply mb-6 py-20 text-sm grid gap-x-28 gap-y-28 md:gap-x-16 md:gap-y-10 relative px-10 overflow-hidden;
   @apply grid-cols-2 md:grid-cols-6;
 
   &__item {
