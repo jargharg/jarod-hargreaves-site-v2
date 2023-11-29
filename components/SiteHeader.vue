@@ -31,7 +31,7 @@ export default {
   }
 
   &__inner {
-    @apply flex justify-between gap-2 pb-3 border-b-2 border-black;
+    @apply flex justify-between gap-2 pb-3 border-b-2 border-current;
   }
 
   &__name {

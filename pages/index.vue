@@ -1,16 +1,16 @@
 <template>
-  <article class="pt-10 flex-1 container flex flex-col">
-    <div class="">
+  <article class="pt-5 flex-1 container flex flex-col">
+    <div class="border-b-2 border-current pb-5 mb-5">
       <BodyText>
         <prismic-rich-text
           :field="doc.intro"
-          class="text-lg mb-10 leading-[1.15] max-w-[56ch]"
+          class="text-lg leading-[1.15] max-w-[56ch]"
         />
       </BodyText>
 
       <!-- <div
         ref="elHead"
-        class="absolute top-4 right-32 w-[20vw] z-[10000] hidden xl:block"
+        class="absolute top-4 right-40 w-60 z-[10000] hidden xl:block"
       >
         <img
           src="/my-head.png"
@@ -21,7 +21,7 @@
     </div>
 
     <div class="flex-1">
-      <Heading level="2" class="text-2xl">
+      <Heading level="2" class="text-3xl tracking-tighter">
         Selected Work
       </Heading>
       <DraggableProjectsList :projects="doc.projects" />

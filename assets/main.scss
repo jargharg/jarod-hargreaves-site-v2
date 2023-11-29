@@ -1,5 +1,3 @@
-@import url("https://use.typekit.net/xai7jgj.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +16,7 @@
 html,
 body {
   @apply tracking-tight leading-none;
-  
+
   &.dark-mode {
     @apply bg-black text-white;
   }

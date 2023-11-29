@@ -180,11 +180,11 @@ export default {
   }
 
   &__draggable {
-    @apply w-10 relative opacity-50 group-hover:opacity-100 transition-opacity;
+    @apply ml-4 w-10 relative opacity-50 group-hover:opacity-100 transition-opacity;
 
     &::after {
       content: "";
-      @apply absolute top-[60%] right-full w-40 md:w-80 border-b-2 border-black dark:border-white;
+      @apply absolute top-[60%] right-full w-40 md:w-80 border-b border-black dark:border-white;
     }
 
     &__icon {
