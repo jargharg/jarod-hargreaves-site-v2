@@ -2,7 +2,7 @@
   <div
     class="body-text"
     :class="{
-      'text-sm lg:text-base leading-[1.1] -tracking-[0.015em]': size === 'base',
+      'text-sm lg:text-base leading-[1.2] -tracking-[0.015em]': size === 'base',
       // add other sizes here
       'prose max-w-none': prose,
       'leading-7': !prose,

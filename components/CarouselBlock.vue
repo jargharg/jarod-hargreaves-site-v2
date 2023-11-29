@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="flex flex-col justify-between gap-10">
       <div class="flex flex-col gap-5">
-        <button v-for="(item, index) in items" :key="index" class="text-left relative" @click="onClickLabel(index)">
+        <button v-for="(item, index) in items" :key="index" class="text-left relative leading-[1.2]" @click="onClickLabel(index)">
           <!-- @TODO FLIP between maybe with a curve? -->
           <transition @enter="onArrowEnter" @leave="onArrowLeave">
             <IconArrowRight v-if="index === activeIndex" class="absolute top-1 right-full h-2.5 md:h-3 pr-1 md:pr-2" />

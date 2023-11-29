@@ -15,7 +15,7 @@
 
 html,
 body {
-  @apply tracking-tight leading-none;
+  @apply tracking-tight;
 
   ::selection {
     @apply bg-black text-white;

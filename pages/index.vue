@@ -4,7 +4,7 @@
       <BodyText>
         <prismic-rich-text
           :field="doc.intro"
-          class="text-lg leading-[1.15] max-w-[56ch]"
+          class="text-lg leading-[1.2] max-w-[56ch]"
         />
       </BodyText>
 

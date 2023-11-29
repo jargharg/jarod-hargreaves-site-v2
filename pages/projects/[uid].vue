@@ -1,12 +1,12 @@
 <template>
   <article class="pt-6 pb-20">
-    <div class="container">
-      <ProjectHeader :project="doc" />
+    <div class="container grid grid-cols-12">
+      <ProjectHeader :project="doc" class="col-span-full" />
 
-      <div class="max-w-6xl mx-auto">
+      <div class="col-span-full xl:col-span-10 xl:col-start-2">
         <prismic-rich-text
           :field="doc.intro"
-          class="text-xl font-serif mb-5"
+          class="text-2xl font-serif mb-5"
         />
 
         <ProjectDetails
@@ -14,9 +14,9 @@
           :tech="doc.tech"
           :project-link="$prismic.asLink(doc.projectLink)"
         />
-      </div>
 
-      <NuxtSliceZone :slices="doc.slices3" />
+        <NuxtSliceZone :slices="doc.slices3" />
+      </div>
     </div>
   </article>
 </template>
