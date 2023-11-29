@@ -16,7 +16,7 @@
             <path :id="`${project.id}-path`" d="M20 50A30 30 0 1 1 80 50A30 30 0 1 1 20 50" fill="none" stroke="black" />
           </defs>
 
-          <circle cx="50" cy="50" r="35" fill="white" stroke="black" />
+          <circle cx="50" cy="50" r="35" class="fill-white dark:fill-black stroke-current" />
           <text font-size="6" class="project__title__text" dy="2" fill="currentColor">
             <textPath :href="`#${project.id}-path`" textLength="183">
               {{ project.title }} &bullet;
@@ -30,7 +30,12 @@
           </text>
         </svg>
 
-        <svg v-if="project.title === 'Walk the Plank'" fill="currentColor" viewBox="-2 -2 143 139" class="h-full w-full z-20">
+        <svg
+          v-if="project.title === 'Walk the Plank'"
+          fill="currentColor"
+          viewBox="-2 -2 143 139"
+          class="h-full w-full z-20"
+        >
           <title>Walk the Plank Logo</title>
           <path
             d="M8.5 12.6A6.3 6.3 0 0 0 2.2 19v3.3a6.3 6.3 0 0 0 6.3 6.3m-1.6 78.5a6.3 6.3 0 0 0-6.3 6.3v3.3A6.3 6.3 0 0 0 7 123"
@@ -50,7 +55,12 @@
           <path d="M17,17V65h1V18H51V65h1V17Z" />
         </svg>
 
-        <svg v-else-if="project.title === 'Silures'" viewBox="-0.5 0 57 59" fill="currentColor" class="h-full w-full z-20">
+        <svg
+          v-else-if="project.title === 'Silures'"
+          viewBox="-0.5 0 57 59"
+          fill="currentColor"
+          class="h-full w-full z-20"
+        >
           <path
             d="M55.6 33c.7-4.4 1.4-9 .1-13.4-1.3-5.2-5-9.6-10-11.7l-.6-.5c-2-1.3-4-3-6-4.4a20.2 20.2 0 0 0-9.7-3c-4-.2-8.2 1-11.4 3.6l-.4.1c-2.2 1.2-4.7 2-6.9 3.1-3 1.6-5.5 4-7.3 6.8A17.3 17.3 0 0 0 .7 25.3v.4c-.1 2.5-.7 5-.8 7.5C0 36.5.5 40 2.1 43c2 3.8 5.3 6.8 9.3 8.3 3 2.4 6 4.9 9.6 6.2 6 2.4 12.8 1.1 17.6-2.5l.1-.1c3.6-1.4 7.3-2.7 10.3-5.2 5-4 7.4-10.6 6.6-16.5V33Zm-1.1-9.4c0 1.6-.1 3-.5 4.5-1.7-3.4-4.9-6-8.6-7-6.7-2-12.6 2.2-16.9 6.8-.5-2-1-4-1-6.1a12 12 0 0 1 6.2-11 13 13 0 0 1 8.7-1.5h.6a14.6 14.6 0 0 1 11.5 14.3ZM29.4 1.8c4 0 7.9 1.9 10.7 4.7-3.6-.3-7.4 1-10.4 4-5.2 4.6-4.4 11.9-2.6 18C21.7 27 16 23.8 15.1 18c-1-4 .4-8 3-11 2.7-3.4 7-5.3 11.3-5.2ZM4.9 14.5c1.4-2.3 3.5-4.2 6-5.5 1-.6 2.2-1 3.3-1.4a13 13 0 0 0-2 7.9c.1 5.3 3.4 10 8.3 12.2 2 1 4.2 1.5 6.4 2-4.5 4.8-10.5 8-16.8 4.7A13 13 0 0 1 3.7 27l-.2-.4c-1.3-4-.8-8.4 1.3-12ZM3.7 42.1a15.2 15.2 0 0 1-1.8-7.9c0-1.2.2-2.4.4-3.6a13.9 13.9 0 0 0 20.5 4.6c2-1.3 3.6-2.8 5-4.5 1.7 5.4 1.8 12-2.9 15.7a13 13 0 0 1-11 3C9.6 48.5 5.8 46 3.7 42ZM27 57c-4-.2-7.8-1.9-10.6-4.6a13 13 0 0 0 7.8-2.2c4.5-2.8 7-8 6.4-13.3a29 29 0 0 0-1.4-6.5c2 .5 4 1.1 6 2.2a12.4 12.4 0 0 1 3.3 19.1l-.4.5A14.5 14.5 0 0 1 27 57Zm24.5-12.8a16.2 16.2 0 0 1-9.3 6.9 14 14 0 0 0 1.7-11c-1.5-6.8-8.1-9.8-14.3-11.2a22 22 0 0 1 4.8-3.9c5.2-3.3 12-2 16 2.5 1 1.4 2 2.9 2.5 4.6v.1c1.3 4 .8 8.4-1.4 12Z"
           />
@@ -67,7 +77,12 @@
           />
         </svg>
 
-        <svg v-else-if="project.title === 'Brighter Sound'" viewBox="0 0 73 132" class="h-full w-full z-20" fill="currentColor">
+        <svg
+          v-else-if="project.title === 'Brighter Sound'"
+          viewBox="0 0 73 132"
+          class="h-full w-full z-20"
+          fill="currentColor"
+        >
           <path
             d="M44.24 132H0v-17.45h4.82v12.66h39.42c7.3 0 13.02-2 17.47-6.07 4.3-3.84 6.47-8.92 6.47-15.12 0-2.13-.27-4.17-.81-6.09l4.65-1.28c.65 2.33.98 4.81.98 7.37 0 7.62-2.7 13.9-8.05 18.66-5.28 4.85-12.26 7.32-20.71 7.32Z"
           />
@@ -82,7 +97,13 @@
           />
         </svg>
 
-        <img v-else src="/file.svg" class="h-full w-full z-20">
+        <svg v-else viewBox="0 0 80 109" class="h-full w-full z-20">
+          <g stroke="currentColor" fill="none" vector-effect="non-scaling-stroke" stroke-miterlimit="10" stroke-width="2">
+            <path
+              d="M78.96 1.03H1.04v106.94h77.92V1.03ZM8.14 24.58h27.58M8.14 33.25h63.72M8.14 41.91h63.72M8.14 50.58h63.72"
+            />
+          </g>
+        </svg>
 
         <!-- <h2 class="rounded-full bg-white px-4 py-1 text-lg font-serif text-center">
           {{ project.title }}
