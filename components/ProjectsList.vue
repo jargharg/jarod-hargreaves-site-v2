@@ -14,7 +14,7 @@
             :image="project.metaImage"
             :with-dimensions="false"
             sizes="sm:100vw md:50vw lg:50vw xl:33vw 2xl:33vw"
-            style="image-rendering: pixelated;"
+            class="image-pixelated"
           />
 
           <div class="absolute inset-0 mix-blend-screen" :style="{ backgroundColor: project.tint }" />
@@ -33,10 +33,9 @@
       <PrismicSizedImage
         v-if="imageOverlay"
         :with-dimensions="false"
-        class="image-overlay"
+        class="image-overlay image-pixelated"
         :image="imageOverlay"
         sizes="sm:100vw md:100vw lg:100vw xl:100vw xl:100vw"
-        style="image-rendering: pixelated;"
       />
     </transition>
   </div>

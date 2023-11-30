@@ -19,13 +19,6 @@
           "label": "Slug"
         },
         "type": "UID"
-      },
-      "tint": {
-        "type": "Color",
-        "config": {
-          "label": "Tint",
-          "placeholder": ""
-        }
       }
     },
     "Metadata": {
@@ -70,6 +63,13 @@
               "height": 6000
             }
           ]
+        }
+      },
+      "tint": {
+        "type": "Color",
+        "config": {
+          "label": "Tint",
+          "placeholder": ""
         }
       }
     },

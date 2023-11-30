@@ -2,22 +2,21 @@
   <div class="relative h-[calc(100dvh-150px)] mb-10">
     <PrismicSizedImage
       :image="project.heroImage"
-      :with-dimensions="false"
       :lazy="false"
-      style="image-rendering: pixelated;"
+      :with-dimensions="false"
+      class="image-pixelated"
       densities="1"
       sizes="sm:100vw md:100vw lg:100vw xl:100vw 2xl:100vw"
     />
 
+    <div class="absolute inset-0 mix-blend-screen" :style="{ backgroundColor: project.tint }" />
+
     <div
-      class="absolute bottom-0 px-5 pt-20 inset-x-0 text-white flex flex-col items-center text-center bg-gradient-to-t from-[#000c] to-transparent z-20"
+      class="absolute bottom-0 px-5 pt-20 inset-x-0 text-white flex flex-col items-center text-center z-20"
+      :style="`background: linear-gradient(transparent, ${project.tint ?? 'black'});`"
     >
       <Heading level="2" class="project-header__title">
-        <span
-          v-for="(char, index) in title"
-          :key="index"
-          :class="`char--${char}${title[index + 1]}`"
-        >{{ char }}</span>
+        <span v-for="(char, index) in title" :key="index" :class="`char--${char}${title[index + 1]}`">{{ char }}</span>
       </Heading>
     </div>
   </div>

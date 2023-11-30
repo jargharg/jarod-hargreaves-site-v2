@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="relative min-h-[50vh] p-10 overflow-hidden" :style="{ backgroundColor }">
+    <div class="relative min-h-[80vh] p-10 overflow-hidden" :style="{ backgroundColor }">
       <template v-for="(item, index) in items" :key="index">
         <transition name="fade">
           <div v-if="index === activeIndex" class="absolute inset-0">
