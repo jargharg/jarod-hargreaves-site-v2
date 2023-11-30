@@ -8,7 +8,7 @@
       Jarod Hargreaves
     </div>
 
-    <div class="absolute flex items-baseline gap-2 not-sr-only pr-1 bg-white dark:bg-black z-10" aria-hidden="true">
+    <div class="absolute flex items-baseline gap-2 not-sr-only pr-1 bg-white z-10" aria-hidden="true">
       <div class="flex items-baseline">
         <div>
           <span v-for="(char, index) in nameParts[0]" :key="index" :class="`name__letter--${char}`">
@@ -184,7 +184,7 @@ export default {
 
     &::after {
       content: "";
-      @apply absolute top-[48%] right-full w-40 md:w-80 border-b-2 border-black dark:border-white;
+      @apply absolute top-[48%] right-full w-40 md:w-80 border-b-2 border-black;
     }
 
     &__icon {

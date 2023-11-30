@@ -87,7 +87,7 @@ export default {
 
 .image-overlay {
   @apply inset-0 fixed z-[9999] object-cover object-center;
-  @apply mix-blend-multiply dark:mix-blend-screen opacity-75;
+  @apply mix-blend-multiply opacity-75;
   @apply pointer-events-none select-none;
 }
 

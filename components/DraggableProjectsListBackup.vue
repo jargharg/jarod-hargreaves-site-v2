@@ -16,7 +16,7 @@
             <path :id="`${project.id}-path`" d="M20 50A30 30 0 1 1 80 50A30 30 0 1 1 20 50" fill="none" stroke="black" />
           </defs>
 
-          <circle cx="50" cy="50" r="35" class="fill-white dark:fill-black stroke-current" />
+          <circle cx="50" cy="50" r="35" class="fill-white stroke-current" />
           <text font-size="6" class="project__title__text" dy="2" fill="currentColor">
             <textPath :href="`#${project.id}-path`" textLength="183">
               {{ project.title }} &bullet;
@@ -231,7 +231,7 @@ export default {
 
 .image-overlay {
   @apply inset-0 fixed z-[9999] object-cover object-center;
-  @apply mix-blend-multiply dark:mix-blend-screen opacity-75;
+  @apply mix-blend-multiply opacity-75;
   @apply pointer-events-none select-none;
 }
 

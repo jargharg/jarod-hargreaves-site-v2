@@ -24,7 +24,7 @@ export default {
 
 <style scoped lang="scss">
 .site-header {
-  @apply pt-4 bg-white dark:bg-black dark:text-white;
+  @apply pt-4 bg-white;
 
   &--collapsed {
     @apply -translate-y-4 transition-transform;
