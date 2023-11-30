@@ -1,5 +1,5 @@
 <template>
-  <div class="text-sm grid sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden bg-black gap-0.5 pb-0.5">
+  <div class="text-sm grid sm:grid-cols-2 lg:grid-cols-3 relative overflow-hidden bg-black gap-0.5 pb-0.5">
     <div v-for="project in projects" :key="project.id" class="projects-list__item">
       <NuxtLink
         :to="$prismic.asLink(project)"
@@ -33,6 +33,18 @@
           </h2>
         </div>
       </NuxtLink>
+    </div>
+
+    <div class="hidden sm:block col-start-2 row-start-1 relative h-full w-full bg-white">
+      <CellBreathers class="absolute inset-0 w-full h-full" />
+    </div>
+
+    <div class="hidden sm:block col-start-1 row-start-2 relative h-full w-full bg-white">
+      <CellSun class="absolute inset-0 w-full h-full" />
+    </div>
+
+    <div class="hidden sm:block col-start-2 lg:col-start-3 row-start-3 lg:row-start-2 relative h-full w-full bg-white">
+      <CellSpinners class="absolute inset-0 w-full h-full" />
     </div>
 
     <transition name="fade">
