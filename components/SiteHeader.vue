@@ -24,14 +24,14 @@ export default {
 
 <style scoped lang="scss">
 .site-header {
-  @apply pt-4 bg-white;
+  @apply bg-white;
 
   &--collapsed {
     @apply -translate-y-4 transition-transform;
   }
 
   &__inner {
-    @apply flex justify-between gap-2 pb-3 border-b-2 border-current overflow-y-hidden;
+    @apply pt-4 flex justify-between gap-2 pb-3 border-b-2 border-current overflow-y-hidden;
   }
 
   &__name {
@@ -39,7 +39,7 @@ export default {
   }
 
   &__side {
-    @apply flex flex-col items-end justify-between gap-2 text-sm tracking-normal font-medium;
+    @apply flex flex-col items-end justify-between gap-1 xl:gap-2 text-xs xl:text-sm tracking-normal font-medium;
   }
 }
 </style>

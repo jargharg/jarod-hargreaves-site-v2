@@ -180,7 +180,7 @@ export default {
   }
 
   &__draggable {
-    @apply ml-4 w-16 relative; // opacity-50 group-hover:opacity-100 transition-opacity;
+    @apply hidden sm:block ml-4 w-10 md:w-16 relative;
 
     &::after {
       content: "";
@@ -188,9 +188,8 @@ export default {
     }
 
     &__icon {
-      @apply absolute left-0 top-2 w-full;
+      @apply absolute left-0 top-0 xl:top-2 w-full;
       image-rendering: pixelated;
-
     }
   }
 

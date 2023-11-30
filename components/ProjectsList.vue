@@ -1,15 +1,17 @@
 <template>
   <div class="text-sm grid sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden bg-black gap-0.5 pb-0.5">
     <div v-for="project in projects" :key="project.id" class="projects-list__item">
-      <NuxtLink :to="$prismic.asLink(project)" class="relative block bg-white cursor-pointer h-full -outline-offset-2">
-        <!--
-        @blur="onMouseLeaveProject()"
+      <NuxtLink
+        :to="$prismic.asLink(project)"
+        class="relative block bg-white cursor-pointer h-full -outline-offset-2 group"
         @click="onMouseLeaveProject()"
-        @focus="onMouseEnterProject(project)"
         @mouseenter="onMouseEnterProject(project)"
         @mouseleave="onMouseLeaveProject()"
-       -->
-        <div class="aspect-square 2xl:aspect-[3/2] w-full relative">
+      >
+        <div
+          class="aspect-square 2xl:aspect-[3/2] w-full relative transition-opacity duration-300"
+          :class="{ 'opacity-50': imageOverlay }"
+        >
           <PrismicSizedImage
             :image="project.metaImage"
             :with-dimensions="false"
@@ -17,10 +19,14 @@
             class="image-pixelated"
           />
 
-          <div class="absolute inset-0 mix-blend-screen" :style="{ backgroundColor: project.tint }" />
+          <div
+            class="absolute inset-0 mix-blend-screen transition-opacity duration-300"
+            :class="{ 'opacity-0': imageOverlay }"
+            :style="{ backgroundColor: project.tint }"
+          />
         </div>
 
-        <div class="flex items-center gap-2 px-4 py-6">
+        <div class="flex items-center gap-2 px-4 py-6 group-hover:translate-x-10 transition-transform duration-300">
           <IconArrowRight class="w-4 h-4" />
           <h2 class="leading-none text-base font-medium text-center">
             {{ project.title }}
@@ -30,20 +36,21 @@
     </div>
 
     <transition name="fade">
-      <PrismicSizedImage
-        v-if="imageOverlay"
-        :with-dimensions="false"
-        class="image-overlay image-pixelated"
-        :image="imageOverlay"
-        sizes="sm:100vw md:100vw lg:100vw xl:100vw xl:100vw"
-      />
+      <div v-if="imageOverlay" class="image-overlay">
+        <PrismicSizedImage
+          :with-dimensions="false"
+          class="image-pixelated"
+          :image="imageOverlay"
+          sizes="sm:100vw md:100vw lg:100vw xl:100vw xl:100vw"
+        />
+
+        <div class="absolute inset-0 mix-blend-screen" :style="{ backgroundColor: imageOverlayTint }" />
+      </div>
     </transition>
   </div>
 </template>
 
 <script>
-import gsap from 'gsap'
-
 export default {
   props: {
     projects: {
@@ -54,10 +61,12 @@ export default {
 
   setup () {
     const imageOverlay = ref(null)
+    const imageOverlayTint = ref(null)
 
     const onMouseEnterProject = (project) => {
       if (project.metaImage?.card) {
         imageOverlay.value = project.metaImage.card
+        imageOverlayTint.value = project.tint
       }
     }
 
@@ -65,7 +74,7 @@ export default {
       imageOverlay.value = null
     }
 
-    return { onMouseEnterProject, onMouseLeaveProject, imageOverlay }
+    return { onMouseEnterProject, onMouseLeaveProject, imageOverlay, imageOverlayTint }
   },
 }
 </script>
@@ -86,7 +95,7 @@ export default {
 
 .image-overlay {
   @apply inset-0 fixed z-[9999] object-cover object-center;
-  @apply mix-blend-multiply opacity-75;
+  @apply mix-blend-multiply opacity-100;
   @apply pointer-events-none select-none;
 }
 
