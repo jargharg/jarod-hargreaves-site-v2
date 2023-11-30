@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 .project-header {
   &__title {
-    @apply text-5xl md:text-6xl xl:text-7xl w-auto mb-4 tracking-tight;
+    @apply text-5xl md:text-6xl xl:text-7xl w-auto pb-10 tracking-tight leading-none;
   }
 }
 
@@ -80,6 +80,155 @@ export default {
 
   &--nk {
     letter-spacing: 0.015em;
+  }
+
+  &--St {
+    letter-spacing: -0.07em;
+  }
+
+  &--tu {
+    letter-spacing: 0.02em;
+  }
+
+  &--ud {
+    letter-spacing: -0.04em;
+  }
+
+  &--di {
+    letter-spacing: -0.03em;
+  }
+
+  &--io {
+    letter-spacing: -0.07em;
+  }
+
+  &--Tr {
+    letter-spacing: -0.12em;
+  }
+
+  &--re {
+    letter-spacing: -0.03em;
+  }
+
+  &--eb {
+    letter-spacing: -0.05em;
+  }
+
+  &--bl {
+    letter-spacing: -0.08em;
+  }
+
+  &--le {
+    letter-spacing: -0.07em;
+  }
+
+  &--Br {
+    letter-spacing: -0.08em;
+  }
+
+  &--ri {
+    letter-spacing: 0.01em;
+  }
+
+  &--ig {
+    letter-spacing: -0.07em;
+  }
+
+  &--gh {
+    letter-spacing: -0.02em;
+  }
+
+  &--ht {
+    letter-spacing: -0.05em;
+  }
+
+  &--So {
+    letter-spacing: -0.04em;
+  }
+
+  &--ou {
+    letter-spacing: -0.05em;
+  }
+
+  &--un {
+    letter-spacing: 0em;
+  }
+
+  &--nd {
+    letter-spacing: -0.04em;
+  }
+
+  &--Pu {
+    letter-spacing: -0.01em;
+  }
+
+  &--ur {
+    letter-spacing: 0.01em;
+  }
+
+  &--rc {
+    letter-spacing: -0.04em;
+  }
+
+  &--ce {
+    letter-spacing: -0.04em;
+  }
+
+  &--el {
+    letter-spacing: -0.07em;
+  }
+
+  &--ll {
+    letter-spacing: -0.04em;
+  }
+
+  &--TP {
+    letter-spacing: 0em;
+
+    +span {
+      letter-spacing: -0.05em;
+
+      +span {
+        letter-spacing: -0.15em;
+        @apply inline-block -translate-y-[5%];
+      }
+    }
+  }
+
+  &--OM+span {
+    letter-spacing: -0.15em;
+
+    +span {
+      @apply inline-block -translate-y-[5%];
+    }
+  }
+
+  &--Gr {
+    letter-spacing: 0em;
+  }
+
+  &--im {
+    letter-spacing: -0.01em;
+  }
+
+  &--sb {
+    letter-spacing: -0.06em;
+  }
+
+  &--by {
+    letter-spacing: -0.07em;
+  }
+
+  &--Si {
+    letter-spacing: -0.09em;
+  }
+
+  &--il {
+    letter-spacing: -0.03em;
+  }
+
+  &--lu {
+    letter-spacing: -0.05em;
   }
 }
 </style>

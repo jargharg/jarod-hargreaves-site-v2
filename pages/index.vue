@@ -2,7 +2,10 @@
   <article class="flex-1">
     <div class="mt-4 pb-8">
       <BodyText class="container">
-        <prismic-rich-text :field="doc.intro" class="text-lg md:text-xl leading-[1] max-w-[56ch] font-serif" />
+        <prismic-rich-text
+          :field="doc.intro"
+          class="max-w-[40ch] text-lg md:text-2xl leading-[1.1] font-serif -tracking-[0.04em]"
+        />
       </BodyText>
     </div>
 
