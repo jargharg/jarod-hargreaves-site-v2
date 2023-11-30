@@ -1,6 +1,6 @@
 <template>
   <svg viewBox="-4 -4 551 669" role="presentation">
-    <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1">
+    <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2">
       <path
         vector-effect="non-scaling-stroke"
         d="m137.9 376.4 4.4-28.9-60.4-19-10.5 15.4c-2.3 3.4-.8 8 3 9.4l63.5 23.1Zm-63.7-64.1 44.8-28.4-19.4-28.5-56.4 40.2a4.9 4.9 0 0 0 1.5 8.7l29.5 8Z"

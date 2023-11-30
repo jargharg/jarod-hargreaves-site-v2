@@ -8,6 +8,7 @@
         ...attrs,
         ...(lazy ? { loading: 'lazy' } : {}),
       }"
+      fit="inside"
       class="transition-opacity object-cover absolute w-full h-full"
       placeholder
     />

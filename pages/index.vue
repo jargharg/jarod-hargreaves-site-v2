@@ -1,30 +1,13 @@
 <template>
-  <article class="pt-5 flex-1 container flex flex-col">
-    <div class="border-b-2 border-current pb-5 mb-5">
-      <BodyText>
-        <prismic-rich-text
-          :field="doc.intro"
-          class="text-lg leading-[1.2] max-w-[56ch]"
-        />
+  <article class="flex-1">
+    <div class="mt-4 pb-8">
+      <BodyText class="container">
+        <prismic-rich-text :field="doc.intro" class="text-lg md:text-xl leading-[1.2] max-w-[56ch] font-serif" />
       </BodyText>
-
-      <!-- <div
-        ref="elHead"
-        class="absolute top-4 right-40 w-60 z-[10000] hidden xl:block"
-      >
-        <img
-          src="/my-head.png"
-          alt="Photo of me"
-          class="w-full"
-        >
-      </div> -->
     </div>
 
-    <div class="flex-1">
-      <Heading level="2" class="text-3xl tracking-tighter">
-        Selected Work
-      </Heading>
-      <DraggableProjectsList :projects="doc.projects" />
+    <div class="flex-1 container">
+      <ProjectsList :projects="doc.projects" class="border-t-2 border-current" />
     </div>
   </article>
 </template>

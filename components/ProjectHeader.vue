@@ -4,10 +4,13 @@
       :image="project.heroImage"
       :with-dimensions="false"
       :lazy="false"
+      style="image-rendering: pixelated;"
+      densities="1"
+      sizes="sm:100vw md:100vw lg:100vw xl:100vw 2xl:100vw"
     />
 
     <div
-      class="absolute bottom-0 px-5 pt-20 inset-x-0 text-white flex flex-col items-center text-center bg-gradient-to-t from-black to-transparent z-20"
+      class="absolute bottom-0 px-5 pt-20 inset-x-0 text-white flex flex-col items-center text-center bg-gradient-to-t from-[#000c] to-transparent z-20"
     >
       <Heading level="2" class="project-header__title">
         <span

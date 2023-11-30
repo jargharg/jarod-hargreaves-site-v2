@@ -24,14 +24,14 @@ export default {
 
 <style scoped lang="scss">
 .site-header {
-  @apply  pt-4 bg-white dark:bg-black dark:text-white;
+  @apply pt-4 bg-white dark:bg-black dark:text-white;
 
   &--collapsed {
     @apply -translate-y-4 transition-transform;
   }
 
   &__inner {
-    @apply flex justify-between gap-2 pb-3 border-b-2 border-current;
+    @apply flex justify-between gap-2 pb-3 border-b-2 border-current overflow-y-hidden;
   }
 
   &__name {

@@ -43,7 +43,7 @@
     </div>
 
     <span ref="elDraggable" class="name__draggable">
-      <IconDragHand class="name__draggable__icon" />
+      <img src="/hand-dither.png" class="name__draggable__icon">
     </span>
   </NuxtLink>
 </template>
@@ -180,15 +180,17 @@ export default {
   }
 
   &__draggable {
-    @apply ml-4 w-10 relative opacity-50 group-hover:opacity-100 transition-opacity;
+    @apply ml-4 w-16 relative; // opacity-50 group-hover:opacity-100 transition-opacity;
 
     &::after {
       content: "";
-      @apply absolute top-[60%] right-full w-40 md:w-80 border-b border-black dark:border-white;
+      @apply absolute top-[48%] right-full w-40 md:w-80 border-b-2 border-black dark:border-white;
     }
 
     &__icon {
-      @apply absolute left-0 top-2 w-full h-full;
+      @apply absolute left-0 top-2 w-full;
+      image-rendering: pixelated;
+
     }
   }
 
@@ -201,7 +203,7 @@ export default {
       letter-spacing: -0.02em;
 
       &:has(+ .name__letter--v) {
-        letter-spacing: -0.045em;
+        letter-spacing: -0.07em;
       }
     }
 
@@ -226,7 +228,7 @@ export default {
     }
 
     &--v {
-      letter-spacing: -0.05em;
+      letter-spacing: -0.07em;
     }
   }
 }

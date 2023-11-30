@@ -2,7 +2,12 @@
   <div class="columns">
     <div class="flex flex-col justify-between gap-10">
       <div class="flex flex-col gap-5">
-        <button v-for="(item, index) in items" :key="index" class="text-left relative leading-[1.2]" @click="onClickLabel(index)">
+        <button
+          v-for="(item, index) in items"
+          :key="index"
+          class="text-left relative leading-[1.2]"
+          @click="onClickLabel(index)"
+        >
           <!-- @TODO FLIP between maybe with a curve? -->
           <transition @enter="onArrowEnter" @leave="onArrowLeave">
             <IconArrowRight v-if="index === activeIndex" class="absolute top-1 right-full h-2.5 md:h-3 pr-1 md:pr-2" />
@@ -108,12 +113,12 @@ export default {
       const y = previousArrowLocation - currentLocation
 
       gsap.timeline({ onComplete })
-        .to(el, { x: -20, ease: 'power4.out', duration: 0.2, rotate: y < 0 ? 75 : -75 })
-        .to(el, { x: 0, ease: 'power2.out', duration: 0.6, rotate: 0 })
+        .to(el, { x: -10, ease: 'sine.out', duration: 0.3, rotate: y < 0 ? 90 : -90 })
+        .to(el, { x: 0, ease: 'sine.in', duration: 0.7, rotate: 0 })
         .fromTo(
           el,
           { y },
-          { y: 0, duration: 0.5, ease: 'power4.out' },
+          { y: 0, duration: 1, ease: 'sine.out' },
           0)
     }
 
