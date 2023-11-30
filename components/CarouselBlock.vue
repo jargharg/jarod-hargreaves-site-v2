@@ -9,7 +9,7 @@
           @click="onClickLabel(index)"
         >
           <!-- @TODO FLIP between maybe with a curve? -->
-          <transition @enter="onArrowEnter" @leave="onArrowLeave">
+          <transition v-if="items.length > 1" @enter="onArrowEnter" @leave="onArrowLeave">
             <IconArrowRight v-if="index === activeIndex" class="absolute top-1 right-full h-2.5 md:h-3 pr-1 md:pr-2" />
           </transition>
 
@@ -21,7 +21,7 @@
         </button>
       </div>
 
-      <div class="flex gap-2 justify-between items-end">
+      <div v-if="items.length > 1" class="flex gap-2 justify-between items-end">
         <button class="carousel__play-button" :aria-label="isPlaying ? 'Pause' : 'Play'" @click="onClickPlayToggle">
           {{ isPlaying ? "Pause" : "Play" }}
 
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="relative min-h-[80vh] p-10 overflow-hidden" :style="{ backgroundColor }">
+    <div class="relative min-h-[50vh] p-10 overflow-hidden" :style="{ backgroundColor }">
       <template v-for="(item, index) in items" :key="index">
         <transition name="fade">
           <div v-if="index === activeIndex" class="absolute inset-0">
@@ -123,6 +123,10 @@ export default {
     }
 
     onMounted(() => {
+      if (props.items.length <= 1) {
+        return
+      }
+
       carouselAnimation = gsap.timeline({ repeat: -1 })
         .set(elPlayIndicator.value, { scaleX: 0, transformOrigin: 'left' })
         .to(elPlayIndicator.value, { scaleX: 1, duration: 10, ease: 'none', autoRound: false })

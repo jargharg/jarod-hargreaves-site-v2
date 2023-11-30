@@ -261,7 +261,18 @@ interface ProjectDocumentData {
    * - **Tab**: Core
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.KeyTextField /**
+  title: prismic.KeyTextField;
+
+  /**
+   * Tint field in *[PAGE] Project*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.tint
+   * - **Tab**: Core
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  tint: prismic.ColorField /**
    * Meta Description field in *[PAGE] Project*
    *
    * - **Field Type**: Text

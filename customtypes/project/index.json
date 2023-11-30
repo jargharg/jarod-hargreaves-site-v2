@@ -19,6 +19,13 @@
           "label": "Slug"
         },
         "type": "UID"
+      },
+      "tint": {
+        "type": "Color",
+        "config": {
+          "label": "Tint",
+          "placeholder": ""
+        }
       }
     },
     "Metadata": {

@@ -1,23 +1,23 @@
 <template>
   <div class="text-sm grid sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden bg-black gap-0.5 pb-0.5">
     <div v-for="project in projects" :key="project.id" class="projects-list__item">
-      <NuxtLink
-        :to="$prismic.asLink(project)"
-        class="relative block bg-white cursor-pointer h-full -outline-offset-2"
+      <NuxtLink :to="$prismic.asLink(project)" class="relative block bg-white cursor-pointer h-full -outline-offset-2">
+        <!--
         @blur="onMouseLeaveProject()"
         @click="onMouseLeaveProject()"
         @focus="onMouseEnterProject(project)"
         @mouseenter="onMouseEnterProject(project)"
         @mouseleave="onMouseLeaveProject()"
-      >
-        <!-- <ProjectIcon :project="project.title" class="h-20 md:h-40 w-full mb-10" /> -->
-        <div class="aspect-square 2xl:aspect-[3/2] w-full">
+       -->
+        <div class="aspect-square 2xl:aspect-[3/2] w-full relative">
           <PrismicSizedImage
             :image="project.metaImage"
             :with-dimensions="false"
             sizes="sm:100vw md:50vw lg:50vw xl:33vw 2xl:33vw"
             style="image-rendering: pixelated;"
           />
+
+          <div class="absolute inset-0 mix-blend-screen" :style="{ backgroundColor: project.tint }" />
         </div>
 
         <div class="flex items-center gap-2 px-4 py-6">
