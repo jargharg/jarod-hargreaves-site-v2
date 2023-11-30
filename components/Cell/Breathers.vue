@@ -4,24 +4,108 @@
 
     <g class="main-group">
       <g>
-        <path class="curve curve--1" d="M90 50a40 40 0 0 0-80 0v70a40 40 0 0 0 80 0V50Z" fill="#000" />
-        <path class="curve curve--2" d="M80 50a30 30 0 0 0-60 0v80a30 30 0 0 0 60 0V50Z" fill="#fff" />
-        <path class="curve curve--3" d="M70 50a20 20 0 0 0-40 0v70a20 20 0 0 0 40 0V50Z" fill="#000" />
-        <path class="curve curve--4" d="M60 50a10 10 0 0 0-20 0v80a10 10 0 0 0 20 0V50Z" fill="#fff" />
+        <path
+          class="curve curve--1"
+          d="M90 50a40 40 0 0 0-80 0v70a40 40 0 0 0 80 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#000"
+        />
+        <path
+          class="curve curve--2"
+          d="M80 50a30 30 0 0 0-60 0v80a30 30 0 0 0 60 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#fff"
+        />
+        <path
+          class="curve curve--3"
+          d="M70 50a20 20 0 0 0-40 0v70a20 20 0 0 0 40 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#000"
+        />
+        <path
+          class="curve curve--4"
+          d="M60 50a10 10 0 0 0-20 0v80a10 10 0 0 0 20 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#fff"
+        />
       </g>
 
       <g transform="translate(-85, 0) rotate(180)" transform-origin="center">
-        <path class="curve curve--1" d="M90 50a40 40 0 0 0-80 0v70a40 40 0 0 0 80 0V50Z" fill="#000" />
-        <path class="curve curve--2" d="M80 50a30 30 0 0 0-60 0v80a30 30 0 0 0 60 0V50Z" fill="#fff" />
-        <path class="curve curve--3" d="M70 50a20 20 0 0 0-40 0v70a20 20 0 0 0 40 0V50Z" fill="#000" />
-        <path class="curve curve--4" d="M60 50a10 10 0 0 0-20 0v80a10 10 0 0 0 20 0V50Z" fill="#fff" />
+        <path
+          class="curve curve--1"
+          d="M90 50a40 40 0 0 0-80 0v70a40 40 0 0 0 80 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#000"
+        />
+        <path
+          class="curve curve--2"
+          d="M80 50a30 30 0 0 0-60 0v80a30 30 0 0 0 60 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#fff"
+        />
+        <path
+          class="curve curve--3"
+          d="M70 50a20 20 0 0 0-40 0v70a20 20 0 0 0 40 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#000"
+        />
+        <path
+          class="curve curve--4"
+          d="M60 50a10 10 0 0 0-20 0v80a10 10 0 0 0 20 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#fff"
+        />
       </g>
 
       <g transform="translate(85, 0) rotate(180)" transform-origin="center">
-        <path class="curve curve--1" d="M90 50a40 40 0 0 0-80 0v70a40 40 0 0 0 80 0V50Z" fill="#000" />
-        <path class="curve curve--2" d="M80 50a30 30 0 0 0-60 0v80a30 30 0 0 0 60 0V50Z" fill="#fff" />
-        <path class="curve curve--3" d="M70 50a20 20 0 0 0-40 0v70a20 20 0 0 0 40 0V50Z" fill="#000" />
-        <path class="curve curve--4" d="M60 50a10 10 0 0 0-20 0v80a10 10 0 0 0 20 0V50Z" fill="#fff" />
+        <path
+          class="curve curve--1"
+          d="M90 50a40 40 0 0 0-80 0v70a40 40 0 0 0 80 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#000"
+        />
+        <path
+          class="curve curve--2"
+          d="M80 50a30 30 0 0 0-60 0v80a30 30 0 0 0 60 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#fff"
+        />
+        <path
+          class="curve curve--3"
+          d="M70 50a20 20 0 0 0-40 0v70a20 20 0 0 0 40 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#000"
+        />
+        <path
+          class="curve curve--4"
+          d="M60 50a10 10 0 0 0-20 0v80a10 10 0 0 0 20 0V50Z"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+          stroke-width="2"
+          stroke="#fff"
+        />
       </g>
     </g>
   </svg>

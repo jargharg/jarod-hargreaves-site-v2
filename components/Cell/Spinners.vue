@@ -30,8 +30,8 @@
     width: 100%;
     aspect-ratio: 1;
     animation: spin 2.13s linear reverse infinite;
-    background-image: repeating-conic-gradient(black 0 9deg,
-        white 9deg 18deg);
+    background-image: repeating-conic-gradient(black 0 0.5deg,
+        white 0.5deg 18deg);
   }
 }
 

@@ -9,7 +9,7 @@
       stroke-width="5"
       fill="none"
       pathLength="85"
-      stroke-dasharray="1 5"
+      stroke-dasharray="0.5 5.5"
     />
     <circle
       cx="5"
@@ -18,7 +18,8 @@
       class="center"
       stroke="black"
       fill="white"
-      stroke-width="0.2"
+      stroke-width="2"
+      vector-effect="non-scaling-stroke"
     />
   </svg>
 </template>
