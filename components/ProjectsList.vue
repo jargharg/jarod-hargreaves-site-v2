@@ -3,14 +3,13 @@
     <div v-for="project in projects" :key="project.id" class="projects-list__item">
       <NuxtLink
         :to="$prismic.asLink(project)"
-        class="relative block bg-white cursor-pointer h-full -outline-offset-2 group"
+        class="relative block bg-white cursor-pointer h-full -outline-offset-2 group hover:z-20"
         @click="onMouseLeaveProject()"
         @mouseenter="onMouseEnterProject(project)"
         @mouseleave="onMouseLeaveProject()"
       >
         <div
-          class="aspect-square 2xl:aspect-[3/2] w-full relative transition-opacity duration-300"
-          :class="{ 'opacity-50': imageOverlay }"
+          class="aspect-square 2xl:aspect-[3/2] w-full relative"
         >
           <PrismicSizedImage
             :image="project.metaImage"
@@ -20,13 +19,13 @@
           />
 
           <div
-            class="absolute inset-0 mix-blend-screen transition-opacity duration-300"
-            :class="{ 'opacity-0': imageOverlay }"
+            class="absolute inset-0 mix-blend-screen"
+
             :style="{ backgroundColor: project.tint }"
           />
         </div>
 
-        <div class="flex items-center gap-2 px-4 py-6 group-hover:translate-x-10 transition-transform duration-300">
+        <div class="flex items-center gap-2 px-4 py-6 group-hover:translate-x-10">
           <IconArrowRight class="w-4 h-4" />
           <h2 class="leading-none text-base font-medium text-center">
             {{ project.title }}
@@ -47,18 +46,18 @@
       <CellSpinners class="absolute inset-0 w-full h-full" />
     </div>
 
-    <transition name="fade">
-      <div v-if="imageOverlay" class="image-overlay">
-        <PrismicSizedImage
-          :with-dimensions="false"
-          class="image-pixelated"
-          :image="imageOverlay"
-          sizes="sm:100vw md:100vw lg:100vw xl:100vw xl:100vw"
-        />
+    <!-- <transition name="fade"> -->
+    <div v-if="imageOverlay" class="image-overlay">
+      <PrismicSizedImage
+        :with-dimensions="false"
+        class="image-pixelated"
+        :image="imageOverlay"
+        sizes="sm:100vw md:100vw lg:100vw xl:100vw xl:100vw"
+      />
 
-        <div class="absolute inset-0 mix-blend-screen" :style="{ backgroundColor: imageOverlayTint }" />
-      </div>
-    </transition>
+      <div class="absolute inset-0 mix-blend-screen" :style="{ backgroundColor: imageOverlayTint }" />
+    </div>
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -106,14 +105,14 @@ export default {
 }
 
 .image-overlay {
-  @apply inset-0 fixed z-[9999] object-cover object-center;
+  @apply inset-0 fixed z-10 object-cover object-center;
   @apply mix-blend-multiply opacity-100;
   @apply pointer-events-none select-none;
 }
 
 .fade-leave-active,
 .fade-enter-active {
-  @apply transition-all duration-300;
+  @apply transition-opacity;
 }
 
 .fade-enter-from,

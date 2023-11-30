@@ -113,12 +113,12 @@ export default {
       const y = previousArrowLocation - currentLocation
 
       gsap.timeline({ onComplete })
-        .to(el, { x: -10, ease: 'sine.out', duration: 0.3, rotate: y < 0 ? 90 : -90 })
-        .to(el, { x: 0, ease: 'sine.in', duration: 0.7, rotate: 0 })
+        .to(el, { x: -10, ease: 'sine.out', duration: 0.1, rotate: y < 0 ? 90 : -90 })
+        .to(el, { x: 0, ease: 'sine.in', duration: 0.4, rotate: 0 })
         .fromTo(
           el,
           { y },
-          { y: 0, duration: 1, ease: 'sine.out' },
+          { y: 0, duration: 0.5, ease: 'sine.out' },
           0)
     }
 
