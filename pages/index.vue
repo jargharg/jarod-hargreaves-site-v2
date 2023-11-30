@@ -6,7 +6,7 @@
       </BodyText>
     </div>
 
-    <div class="flex-1 container">
+    <div class="flex-1 container mb-40">
       <ProjectsList :projects="doc.projects" class="border-t-2 border-current" />
     </div>
   </article>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="text-sm grid sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 relative overflow-hidden bg-black gap-0.5 pb-0.5"
+    class="text-sm grid sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden bg-black gap-0.5 pb-0.5"
   >
     <div v-for="project in projects" :key="project.id" class="projects-list__item">
       <NuxtLink
@@ -13,11 +13,11 @@
         @mouseleave="onMouseLeaveProject()"
       >
         <!-- <ProjectIcon :project="project.title" class="h-20 md:h-40 w-full mb-10" /> -->
-        <div class="aspect-square w-full">
-          <PrismicSizedImage :image="project.metaImage" :with-dimensions="false" sizes="sm:100vw md:50vw lg:50vw xl:33vw 2xl:16vw" />
+        <div class="aspect-square 2xl:aspect-[3/2] w-full">
+          <PrismicSizedImage :image="project.metaImage" :with-dimensions="false" sizes="sm:100vw md:50vw lg:50vw xl:33vw 2xl:33vw" />
         </div>
 
-        <div class="flex items-center gap-2 px-2 py-5">
+        <div class="flex items-center gap-2 px-4 py-6">
           <IconArrowRight class="w-4 h-4" />
           <h2 class="leading-none text-base font-medium text-center">
             {{ project.title }}
