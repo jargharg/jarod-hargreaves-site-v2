@@ -146,7 +146,7 @@ export default {
     })
 
     onUnmounted(() => {
-      carouselAnimation.kill()
+      carouselAnimation?.kill()
     })
 
     return { activeIndex, elPlayIndicator, isPlaying, onClickLabel, onClickPlayToggle, onArrowEnter, onArrowLeave }
