@@ -6,7 +6,7 @@
       <div class="col-span-full xl:col-span-10 xl:col-start-2">
         <prismic-rich-text
           :field="doc.intro"
-          class="text-3xl tracking-tight leading-none font-serif mb-5 w-[125%] scale-x-[80%] origin-left"
+          class="text-2xl tracking-tight leading-[1.1] font-serif mb-5"
         />
 
         <ProjectDetails
