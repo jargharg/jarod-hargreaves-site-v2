@@ -1,7 +1,5 @@
 <template>
-  <footer
-    class="pb-8 pt-40 -mt-20 bg-gradient-to-t from-[#F8FA96] font-medium text-sm tracking-normal leading-none"
-  >
+  <footer class="pb-8 pt-40 -mt-20 bg-gradient-to-t from-[#F8FA96] font-medium text-sm tracking-normal leading-none">
     <div class="container">
       <div class="flex justify-between items-end">
         <div>
@@ -37,12 +35,7 @@
               </svg>
             </a>
 
-            <a
-              v-if="contact.email"
-              :href="`mailto:${contact.email}`"
-              target="_blank"
-              class="hover:underline"
-            >
+            <a v-if="contact.email" :href="`mailto:${contact.email}`" target="_blank" class="hover:underline">
               {{ contact.email }}
             </a>
           </div>
@@ -71,11 +64,11 @@ export default {
       const seconds = ((time % 60000) / 1000).toFixed(0)
 
       const minutesString =
-        minutes > 0 ? `${minutes} minute${minutes !== 1 ? 's' : ''} and ` : ''
+        minutes > 0 ? `${minutes} minute${minutes !== 1 ? 's' : ''}` : ''
       const secondsString = seconds !== '0'
         ? `${seconds} second${seconds !== '1' ? 's' : ''}`
         : ''
-      timeOnSite.value = `${minutesString}${secondsString}`
+      timeOnSite.value = `${minutesString}${minutesString && secondsString ? ' and ' : ''}${secondsString}`
     }
 
     onMounted(() => {
