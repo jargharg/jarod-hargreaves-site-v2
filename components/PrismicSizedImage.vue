@@ -5,6 +5,7 @@
     :dimensions="withDimensions ? image.dimensions : null"
     :lazy="lazy"
     :sizes="sizes"
+    :fit="fit"
   />
 </template>
 
@@ -31,6 +32,11 @@ export default {
     withDimensions: {
       type: Boolean,
       default: true,
+    },
+
+    fit: {
+      type: String,
+      default: 'cover',
     },
   },
 }

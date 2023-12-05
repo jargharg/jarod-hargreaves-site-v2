@@ -9,7 +9,8 @@
         ...(lazy ? { loading: 'lazy' } : {}),
       }"
       fit="inside"
-      class="transition-opacity object-cover absolute w-full h-full"
+      class="transition-opacity absolute w-full h-full"
+      :class="{'object-cover': fit === 'cover', 'object-contain': fit === 'contain'}"
       placeholder
     />
   </div>
@@ -43,6 +44,11 @@ export default {
     sizes: {
       type: String,
       default: 'sm:100vw md:100vw lg:100vw xl:100vw 2xl:100vw',
+    },
+
+    fit: {
+      type: String,
+      default: 'cover',
     },
   },
 

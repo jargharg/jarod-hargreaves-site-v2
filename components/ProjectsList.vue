@@ -1,28 +1,31 @@
 <template>
-  <div class="text-sm grid sm:grid-cols-2 lg:grid-cols-3 relative overflow-hidden bg-black gap-0.5 pb-0.5">
-    <div v-for="project in projects" :key="project.id" class="projects-list__item">
+  <div
+    class="text-sm grid sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-8 relative overflow-hidden bg-black gap-0.5 pb-0.5 grid-flow-dense"
+  >
+    <div
+      v-for="(project, index) in projects"
+      :key="project.id"
+      class="projects-list__item"
+      :style="{ gridColumn: `span ${index % 3 ? 2 : 3}`, gridRow: `span ${index % 3 ? 2 : 3}` }"
+    >
       <NuxtLink
         :to="$prismic.asLink(project)"
-        class="relative block bg-white cursor-pointer h-full -outline-offset-2 group hover:z-20"
+        class="relative bg-white cursor-pointer h-full -outline-offset-2 group z-10 aspect-square flex flex-col"
         @click="onMouseLeaveProject()"
         @mouseenter="onMouseEnterProject(project)"
         @mouseleave="onMouseLeaveProject()"
       >
-        <div
-          class="aspect-square 2xl:aspect-[3/2] w-full relative"
-        >
+        <div class="w-full relative flex-1">
           <PrismicSizedImage
-            :image="project.metaImage"
+            :image="project.metaImage.card"
             :with-dimensions="false"
             sizes="sm:100vw md:50vw lg:50vw xl:33vw 2xl:33vw"
-            class="image-pixelated"
+            class="image-pixelated object-bottom px-2 w-[calc(100%-1rem)]"
+            fit="contain"
+            format="png"
           />
 
-          <div
-            class="absolute inset-0 mix-blend-screen"
-
-            :style="{ backgroundColor: project.tint }"
-          />
+          <div class="absolute inset-0 mix-blend-screen select-none" :style="{ backgroundColor: project.tint }" />
         </div>
 
         <div class="flex items-center gap-2 px-4 py-6 group-hover:translate-x-10">
@@ -34,15 +37,21 @@
       </NuxtLink>
     </div>
 
-    <div class="hidden sm:block col-start-2 row-start-1 relative h-full w-full bg-white">
+    <div class="hidden lg:block relative bg-white aspect-square">
       <CellBreathers class="absolute inset-0 w-full h-full" />
     </div>
 
-    <div class="hidden sm:block col-start-1 row-start-2 relative h-full w-full bg-white">
+    <div class="hidden lg:block bg-white aspect-square" />
+
+    <div class="hidden lg:block relative bg-white aspect-square">
       <CellSun class="absolute inset-0 w-full h-full" />
     </div>
 
-    <div class="hidden sm:block col-start-2 lg:col-start-3 row-start-3 lg:row-start-2 relative h-full w-full bg-white">
+    <div class="hidden lg:block bg-white aspect-square" />
+
+    <div class="hidden lg:block bg-white aspect-square" />
+
+    <div class="hidden lg:block relative bg-white aspect-square">
       <CellSpinners class="absolute inset-0 w-full h-full" />
     </div>
 
@@ -105,7 +114,7 @@ export default {
 }
 
 .image-overlay {
-  @apply inset-0 fixed z-10 object-cover object-center;
+  @apply inset-0 fixed object-cover object-center;
   @apply mix-blend-multiply opacity-100;
   @apply pointer-events-none select-none;
 }

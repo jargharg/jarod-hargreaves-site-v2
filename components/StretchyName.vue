@@ -64,10 +64,10 @@ export default {
     const elSpacer = ref(null)
 
     const isAtMaxWidth = ref(false)
-
     const numberOfExtraChars = ref(0)
-
     const nameParts = reactive(['Ja', '', 'rod Ha', '', 'rgreaves'])
+
+    let dragTl = null
 
     function initStretcher () {
       const { right: containerRight } =
@@ -147,9 +147,20 @@ export default {
       await nextTick()
       initStretcher()
       window.addEventListener('resize', resetStretcher)
+
+      dragTl = gsap.timeline({ repeat: 1, repeatDelay: 1 }).to(elDraggable.value, {
+        duration: 1,
+        x: 20,
+        ease: 'sine.inOut',
+      }).to(elDraggable.value, {
+        duration: 0.8,
+        x: 0,
+        ease: 'elastic.out',
+      })
     })
 
     onUnmounted(() => {
+      dragTl?.kill()
       killStretcher()
       window.removeEventListener('resize', resetStretcher)
     })

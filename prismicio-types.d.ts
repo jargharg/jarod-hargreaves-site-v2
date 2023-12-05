@@ -261,18 +261,7 @@ interface ProjectDocumentData {
    * - **Tab**: Core
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.KeyTextField;
-
-  /**
-   * Tint field in *[PAGE] Project*
-   *
-   * - **Field Type**: Color
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.tint
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/field#color
-   */
-  tint: prismic.ColorField /**
+  title: prismic.KeyTextField /**
    * Meta Description field in *[PAGE] Project*
    *
    * - **Field Type**: Text
@@ -301,7 +290,18 @@ interface ProjectDocumentData {
    * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/field#image
    */;
-  heroImage: prismic.ImageField<"portrait"> /**
+  heroImage: prismic.ImageField<"portrait">;
+
+  /**
+   * Tint field in *[PAGE] Project*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.tint
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  tint: prismic.ColorField /**
    * Project Link field in *[PAGE] Project*
    *
    * - **Field Type**: Link
