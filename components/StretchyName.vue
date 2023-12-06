@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink ref="elContainer" class="name group" to="/">
+  <NuxtLink ref="elContainer" class="name group" to="/" @mousedown.once="killDragTl">
     <div ref="elChar" class="absolute opacity-0 not-sr-only pointer-events-none select-none">
       h
     </div>
@@ -137,6 +137,11 @@ export default {
       numberOfExtraChars.value = 0
     }
 
+    function killDragTl () {
+      dragTl?.kill()
+      gsap.set(elDraggable.value, { clearProps: 'all' })
+    }
+
     async function resetStretcher () {
       await sleep(100)
       killStretcher()
@@ -160,7 +165,7 @@ export default {
     })
 
     onUnmounted(() => {
-      dragTl?.kill()
+      killDragTl()
       killStretcher()
       window.removeEventListener('resize', resetStretcher)
     })
@@ -173,6 +178,7 @@ export default {
       elSpacer,
       isAtMaxWidth,
       nameParts,
+      killDragTl,
     }
   },
 }
