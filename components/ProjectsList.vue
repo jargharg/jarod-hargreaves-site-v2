@@ -1,13 +1,8 @@
 <template>
   <div
-    class="text-sm grid sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-8 relative overflow-hidden bg-black gap-0.5 pb-0.5 grid-flow-dense"
+    class="text-sm grid sm:grid-cols-2 lg:grid-cols-4 relative overflow-hidden bg-black gap-0.5 pb-0.5 grid-flow-dense"
   >
-    <div
-      v-for="(project, index) in projects"
-      :key="project.id"
-      class="projects-list__item"
-      :style="{ gridColumn: `span ${index % 3 ? 2 : 3}`, gridRow: `span ${index % 3 ? 2 : 3}` }"
-    >
+    <div v-for="project in projects" :key="project.id" class="projects-list__item">
       <NuxtLink
         :to="$prismic.asLink(project)"
         class="relative bg-white cursor-pointer h-full -outline-offset-2 group z-10 aspect-square flex flex-col"
@@ -15,12 +10,12 @@
         @mouseenter="onMouseEnterProject(project)"
         @mouseleave="onMouseLeaveProject()"
       >
-        <div class="w-full relative flex-1">
+        <div class="w-[calc(100%-2rem)] mx-auto relative flex-1">
           <PrismicSizedImage
             :image="project.metaImage.card"
             :with-dimensions="false"
-            sizes="sm:100vw md:50vw lg:50vw xl:33vw 2xl:33vw"
-            class="image-pixelated object-bottom px-2 w-[calc(100%-1rem)]"
+            sizes="sm:100vw md:50vw lg:25vw xl:25vw 2xl:25vw"
+            class="image-pixelated object-bottom"
             fit="contain"
             format="png"
           />
@@ -37,21 +32,15 @@
       </NuxtLink>
     </div>
 
-    <div class="hidden lg:block relative bg-white aspect-square">
+    <div class="hidden lg:block relative bg-white aspect-square col-start-2 row-start-1">
       <CellBreathers class="absolute inset-0 w-full h-full" />
     </div>
-
-    <div class="hidden lg:block bg-white aspect-square" />
-
+<!-- 
     <div class="hidden lg:block relative bg-white aspect-square">
       <CellSun class="absolute inset-0 w-full h-full" />
-    </div>
+    </div> -->
 
-    <div class="hidden lg:block bg-white aspect-square" />
-
-    <div class="hidden lg:block bg-white aspect-square" />
-
-    <div class="hidden lg:block relative bg-white aspect-square">
+    <div class="hidden lg:block relative bg-white aspect-square col-start-3 row-start-2">
       <CellSpinners class="absolute inset-0 w-full h-full" />
     </div>
 
@@ -85,7 +74,7 @@ export default {
 
     const onMouseEnterProject = (project) => {
       if (project.metaImage?.card) {
-        imageOverlay.value = project.metaImage.card
+        imageOverlay.value = project.metaImage
         imageOverlayTint.value = project.tint
       }
     }
