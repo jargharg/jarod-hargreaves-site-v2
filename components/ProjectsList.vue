@@ -17,10 +17,9 @@
             sizes="sm:100vw md:50vw lg:25vw xl:25vw 2xl:25vw"
             class="image-pixelated object-bottom"
             fit="contain"
-            format="png"
           />
 
-          <div class="absolute inset-0 mix-blend-screen select-none" :style="{ backgroundColor: project.tint }" />
+          <div class="absolute inset-0 mix-blend-screen select-none pointer-events-none" :style="{ backgroundColor: project.tint }" />
         </div>
 
         <div class="flex items-center gap-2 px-4 py-6 group-hover:translate-x-10">
