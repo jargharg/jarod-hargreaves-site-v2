@@ -35,13 +35,14 @@
     <div class="hidden lg:block relative bg-white aspect-square col-start-2 row-start-1">
       <CellBreathers class="absolute inset-0 w-full h-full" />
     </div>
-<!-- 
+    <!--
     <div class="hidden lg:block relative bg-white aspect-square">
       <CellSun class="absolute inset-0 w-full h-full" />
     </div> -->
 
     <div class="hidden lg:block relative bg-white aspect-square col-start-3 row-start-2">
-      <CellSpinners class="absolute inset-0 w-full h-full" />
+      <!-- <CellSpinners class="absolute inset-0 w-full h-full" /> -->
+      <CellVisitor class="absolute inset-0 w-full h-full" />
     </div>
 
     <!-- <transition name="fade"> -->
