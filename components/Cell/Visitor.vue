@@ -41,7 +41,7 @@
         This is not a joke!
       </p>
 
-      <p>You are<br>the 5th visitor!!</p>
+      <p>You are the 5th visitor!!</p>
     </div>
 
     <button class="w-full p-2 border-black border-t-2 bg-gray-100 font-medium">

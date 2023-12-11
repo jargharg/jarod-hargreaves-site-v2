@@ -5,12 +5,12 @@
     <div v-for="project in projects" :key="project.id" class="projects-list__item">
       <NuxtLink
         :to="$prismic.asLink(project)"
-        class="relative bg-white cursor-pointer h-full -outline-offset-2 group z-10 aspect-square flex flex-col"
+        class="relative bg-white cursor-pointer h-full -outline-offset-2 group z-10 aspect-square flex flex-col pt-4"
         @click="onMouseLeaveProject()"
         @mouseenter="onMouseEnterProject(project)"
         @mouseleave="onMouseLeaveProject()"
       >
-        <div class="w-[calc(100%-2rem)] mx-auto relative flex-1">
+        <div class="w-full max-w-[calc(100%-2rem)] h-full max-h-[calc(100%-1rem)] mx-auto relative flex-1">
           <PrismicSizedImage
             :image="project.metaImage.card"
             :with-dimensions="false"
