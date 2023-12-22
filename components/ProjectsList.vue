@@ -32,7 +32,7 @@
     </div>
 
     <div class="hidden lg:block relative bg-white aspect-square col-start-2 row-start-1">
-      <CellBreathers class="absolute inset-0 w-full h-full" />
+      <CellTubeMan class="absolute inset-0 w-full h-full" />
     </div>
     <!--
     <div class="hidden lg:block relative bg-white aspect-square">
