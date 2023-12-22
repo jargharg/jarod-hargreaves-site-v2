@@ -5,7 +5,7 @@
     <div v-for="project in projects" :key="project.id" class="projects-list__item">
       <NuxtLink
         :to="$prismic.asLink(project)"
-        class="relative bg-white cursor-pointer h-full -outline-offset-2 group z-10 aspect-square flex flex-col pt-4"
+        class="relative bg-white cursor-pointer h-full -outline-offset-2 group z-20 aspect-square flex flex-col pt-4"
         @click="onMouseLeaveProject()"
         @mouseenter="onMouseEnterProject(project)"
         @mouseleave="onMouseLeaveProject()"
@@ -103,7 +103,7 @@ export default {
 }
 
 .image-overlay {
-  @apply inset-0 fixed object-cover object-center;
+  @apply inset-0 fixed object-cover object-center z-10;
   @apply mix-blend-multiply opacity-100;
   @apply pointer-events-none select-none;
 }

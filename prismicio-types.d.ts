@@ -72,6 +72,31 @@ export interface HomepageDocumentDataProjectsItem {
 }
 
 /**
+ * Item in *[PAGE] Homepage → Points*
+ */
+export interface HomepageDocumentDataAboutPointsItem {
+  /**
+   * Heading field in *[PAGE] Homepage → Points*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutPoints[].heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Body field in *[PAGE] Homepage → Points*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutPoints[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
  * Content for [PAGE] Homepage documents
  */
 interface HomepageDocumentData {
@@ -122,7 +147,73 @@ interface HomepageDocumentData {
    * - **Tab**: Projects
    * - **Documentation**: https://prismic.io/docs/field#group
    */;
-  projects: prismic.GroupField<Simplify<HomepageDocumentDataProjectsItem>>;
+  projects: prismic.GroupField<Simplify<HomepageDocumentDataProjectsItem>> /**
+   * Heading field in *[PAGE] Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutHeading
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  aboutHeading: prismic.KeyTextField;
+
+  /**
+   * Intro field in *[PAGE] Homepage*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutIntro
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  aboutIntro: prismic.RichTextField;
+
+  /**
+   * Image field in *[PAGE] Homepage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutImage
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  aboutImage: prismic.ImageField<"SmallScreen">;
+
+  /**
+   * Points field in *[PAGE] Homepage*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutPoints[]
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  aboutPoints: prismic.GroupField<
+    Simplify<HomepageDocumentDataAboutPointsItem>
+  >;
+
+  /**
+   * CTA Label field in *[PAGE] Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutCtaLabel
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  aboutCtaLabel: prismic.KeyTextField;
+
+  /**
+   * CTA Link field in *[PAGE] Homepage*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.aboutCtaLink
+   * - **Tab**: About
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  aboutCtaLink: prismic.LinkField;
 }
 
 /**
@@ -895,6 +986,7 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataProjectsItem,
+      HomepageDocumentDataAboutPointsItem,
       LegalPageDocument,
       LegalPageDocumentData,
       ProjectDocument,
