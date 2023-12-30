@@ -165,7 +165,7 @@ export default {
 
 .carousel {
   &__play-button {
-    @apply bg-white text-black border-black border-2 px-2 py-1 font-medium text-xs;
+    @apply bg-white text-black border-black border-2 px-2 py-1 font-medium text-xs w-20;
     @apply relative rounded-full overflow-hidden focus-visible:outline-offset-4;
   }
 }

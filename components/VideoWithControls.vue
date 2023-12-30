@@ -15,7 +15,7 @@
       :class="{ 'opacity-100': !isPlaying }"
       @click="onClickToggle"
     >
-      <span class="absolute bottom-10 right-10 font-medium text-xs bg-white rounded-full px-2 py-1">
+      <span class="absolute bottom-10 right-10 font-medium text-xs bg-white rounded-full px-2 py-1 w-20">
         {{ isPlaying ? "Pause" : "Play" }}
       </span>
     </button>
