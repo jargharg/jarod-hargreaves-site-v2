@@ -138,7 +138,18 @@ interface HomepageDocumentData {
    * - **Tab**: Intro
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */;
-  intro: prismic.RichTextField /**
+  intro: prismic.RichTextField;
+
+  /**
+   * portrait field in *[PAGE] Homepage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.portrait
+   * - **Tab**: Intro
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  portrait: prismic.ImageField<never> /**
    * Projects field in *[PAGE] Homepage*
    *
    * - **Field Type**: Group

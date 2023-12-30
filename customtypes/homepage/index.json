@@ -44,6 +44,17 @@
           "allowTargetBlank": true,
           "multi": "paragraph,hyperlink,strong,em"
         }
+      },
+      "portrait": {
+        "type": "Image",
+        "config": {
+          "label": "portrait",
+          "constraint": {
+            "width": 1416,
+            "height": 4173
+          },
+          "thumbnails": []
+        }
       }
     },
     "Projects": {

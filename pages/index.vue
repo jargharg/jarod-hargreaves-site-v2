@@ -1,12 +1,21 @@
 <template>
   <article class="flex-1 container mb-10">
-    <section class="mt-4 pb-8">
+    <section class="mt-4 pb-8 relative">
       <BodyText>
         <prismic-rich-text
           :field="doc.intro"
           class="max-w-[40ch] text-lg md:text-2xl leading-[1.1] font-serif -tracking-[0.04em]"
         />
       </BodyText>
+
+      <div ref="elPortrait" class="absolute bottom-4 right-16 lg:right-24 h-[130%]">
+        <nuxt-img
+          :src="doc.portrait.url"
+          class="w-24"
+          :style="{ aspectRatio: doc.portrait.dimensions.width / doc.portrait.dimensions.height }"
+          sizes="sm:96px"
+        />
+      </div>
     </section>
 
     <section class="mb-5">
@@ -64,10 +73,10 @@ import { mapPrismicContentRelationships } from '~/helpers/prismicMappers'
 
 export default {
   async setup () {
-    const elHead = ref(null)
+    const elPortrait = ref(null)
 
     onMounted(() => {
-      Draggable.create(elHead.value)
+      Draggable.create(elPortrait.value)
     })
 
     const graphQuery = `{
@@ -92,7 +101,7 @@ export default {
       dataMapFunction,
     })
 
-    return { doc, elHead }
+    return { doc, elPortrait }
   },
 }
 </script>
