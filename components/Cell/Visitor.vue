@@ -1,7 +1,7 @@
 <template>
   <article class="flex flex-col items-center text-center justify-between">
     <h2 class="p-1 border-b-2 border-black w-full font-serif text-lg bg-gray-100">
-      Message Important
+      Important Message
     </h2>
 
     <p class="uppercase font-medium bg-gradient-to-r from-black to-gray-400 text-white px-4 text-base">
