@@ -24,7 +24,7 @@ export default {
 
 <style scoped lang="scss">
 .site-header {
-  @apply bg-white;
+  @apply sticky top-0 w-full bg-white z-50;
 
   &--collapsed {
     @apply -translate-y-4 transition-transform;

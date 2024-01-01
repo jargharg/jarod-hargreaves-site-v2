@@ -23,10 +23,9 @@ export const defaultTransition = DISABLE_PAGE_TRANSITIONS
         const elTransitionBlock = getTransitionBlock()
 
         return gsap.timeline({ onComplete, defaults })
-
           .set(el, { position: 'fixed', top: headerHeight, left: 0, right: 0, zIndex: 50, background: 'white', minHeight: '100dvh' })
 
-          .set(elHeader, { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50, background: 'white' })
+        // .set(elHeader, { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50, background: 'white' })
 
           .set(elTransitionBlock, { opacity: 1, rotate: -360, x: 0 - elTransitionBlock.scrollWidth - window.innerWidth })
           .to(elTransitionBlock, { x: elTransitionBlock.scrollWidth, rotate: 0, ease: 'sine.out' })
